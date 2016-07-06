@@ -79,7 +79,7 @@ public class physics_BC_PeriodicPrecursor extends StarMacro {
 
     xyzInternalTable_0.extract();
 
-    xyzInternalTable_0.export("outputs/outlet_to_inlet.csv", ",");
+    xyzInternalTable_0.export("../outputs/outlet_to_inlet.csv", ",");
 
 
 
@@ -224,7 +224,18 @@ public class physics_BC_PeriodicPrecursor extends StarMacro {
 
 
     for (int i = 0; i < nPrecursors; i++) {
-      new StarScript(getActiveSimulation(), new java.io.File(resolvePath("physics_BC_PeriodicPrecursor_RunAgain.java"))).play();
+      // new StarScript(getActiveSimulation(), new java.io.File(resolvePath("physics_BC_PeriodicPrecursor_RunAgain.java"))).play();
+
+      // XyzInternalTable xyzInternalTable_0 = 
+      //   ((XyzInternalTable) simulation_0.getTableManager().getTable("outlet"));
+
+      xyzInternalTable_0.extract();
+
+      xyzInternalTable_0.export("../outputs/outlet_to_inlet.csv", ",");
+
+      simulation_0.getSimulationIterator().run();
+
+
     }
 
   }
