@@ -19,9 +19,9 @@ public class export_VirtualDisks extends StarMacro {
     ///////////////////////////////////////////////////////////////////////////////
     // USER INPUTS
     //
-    String path0 = "../outputs/tables/rotors-velocity.csv";
-    String path1 = "../outputs/tables/rotors-thrust.csv";
-    String path2 = "../outputs/tables/rotors-torque.csv";
+    String path0 = "../outputs/rotors-velocity.csv";
+    String path1 = "../outputs/rotors-thrust.csv";
+    String path2 = "../outputs/rotors-torque.csv";
     ///////////////////////////////////////////////////////////////////////////////
     
     public void execute() {

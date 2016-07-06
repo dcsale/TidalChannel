@@ -23,7 +23,7 @@ public class physics_BC_PeriodicPrecursor_RunAgain extends StarMacro {
 
     xyzInternalTable_0.extract();
 
-    xyzInternalTable_0.export("outputs/tables/outlet_to_inlet.csv", ",");
+    xyzInternalTable_0.export("outputs/outlet_to_inlet.csv", ",");
 
     simulation_0.getSimulationIterator().run();
   }

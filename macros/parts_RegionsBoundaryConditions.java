@@ -36,29 +36,54 @@ public class parts_RegionsBoundaryConditions extends StarMacro {
 	// USER INPUTS
 	//
   // TODO: some of these variable should be read in from Matlab, easiest way is write/read from a CSV file
-  String path0    = "outputs/mooring-variables.csv";
+  // String path0    = "outputs/mooring-variables.csv";
 
-
-	static final double xo          = 0;       // origin x coordinate [m]
+  // CASE: Bamfield Flume
+  // static final double xo          = 0;       // origin x coordinate [m]
+  // static final double yo          = 0;       // origin y coordinate [m]
+  // static final double zo          = 0;       // origin z coordinate [m]
+  // static final double length      = 12.3;    // length in x-dimention (steamwise) [m]
+  // static final double width       = 0.98;     // length in y-dimention (crossflow) [m]
+  // static final double depth       = 0.76;      // length in z-dimention (vertical) [m]
+  // static final double bc_TI       = 0.10;     // turbulence intensity for inlet and outlet TI = u' / U [unitless]
+  // static final double bc_Lturb    = 0.0125;   // turbulent length scale for inlet and outlet [m]
+  // static final double inlet_Vx    = 0.9;     // inlet x-velocity [m/s]
+  // static final double inlet_Vy    = 0.0;     // inlet y-velocity [m/s]
+  // static final double inlet_Vz    = 0.0;     // inlet z-velocity [m/s]
+  // CASE: Tidal Channel (large domain)
+  // static final double xo          = 0;       // origin x coordinate [m]
+  // static final double yo          = -150;       // origin y coordinate [m]
+  // static final double zo          = 0;       // origin z coordinate [m]
+  // static final double length 			= 3000;	   // length in x-dimention (steamwise) [m]
+  // static final double width 			= 790;		 // length in y-dimention (crossflow) [m]
+  // static final double depth 			= 50;		   // length in z-dimention (vertical) [m]
+  // static final double bc_TI 			= 0.1; 		 // turbulence intensity for inlet and outlet TI = u' / U [unitless]
+  // static final double bc_Lturb 		= 2.5; 	 // turbulent length scale for inlet and outlet [m]
+  // static final double inlet_Vx 		= 2.0; 		 // inlet x-velocity [m/s]
+  // static final double inlet_Vy 		= 0.0; 		 // inlet y-velocity [m/s]
+  // static final double inlet_Vz 		= 0.0; 		 // inlet z-velocity [m/s]
+  // CASE: Tidal Channel (small domain)
+  static final double xo          = 0;       // origin x coordinate [m]
   static final double yo          = 0;       // origin y coordinate [m]
   static final double zo          = 0;       // origin z coordinate [m]
-  static final double length 			= 800;	   // length in x-dimention (steamwise) [m]
-	static final double width 			= 320;		 // length in y-dimention (crossflow) [m]
-	static final double depth 			= 50;		   // length in z-dimention (vertical) [m]
-	static final double bc_TI 			= 0.1; 		 // turbulence intensity for inlet and outlet TI = u' / U [unitless]
-	static final double bc_Lturb 		= 2.5; 	 // turbulent length scale for inlet and outlet [m]
-	static final double inlet_Vx 		= 2.0; 		 // inlet x-velocity [m/s]
-	static final double inlet_Vy 		= 0.0; 		 // inlet y-velocity [m/s]
-	static final double inlet_Vz 		= 0.0; 		 // inlet z-velocity [m/s]
+  static final double length      = 800;    // length in x-dimention (steamwise) [m]
+  static final double width       = 320;     // length in y-dimention (crossflow) [m]
+  static final double depth       = 50;      // length in z-dimention (vertical) [m]
+  static final double bc_TI       = 0.1;     // turbulence intensity for inlet and outlet TI = u' / U [unitless]
+  static final double bc_Lturb    = 2.5;   // turbulent length scale for inlet and outlet [m]
+  static final double inlet_Vx    = 2.0;     // inlet x-velocity [m/s]
+  static final double inlet_Vy    = 0.0;     // inlet y-velocity [m/s]
+  static final double inlet_Vz    = 0.0;     // inlet z-velocity [m/s]
 
   // Usually z0 is larger than the median grain size; 
   // a first approximation might be z0 =~ 2 * d_90, where d_90 grain size at 
   // which 90% of the sample is finer. Hence, the highest value of bottom friction coefficient
   // under consideration would imply d_90 ~ 20 cm = 0.02 m
+  // static final double z0          = 0.0001;    // for the Bamfield flume (smooth)
   static final double z0 				  = 0.0136;		 // seabed surface roughness height [m], UW-NNMREC
   // static final double z0          = 0.0025;    // seabed surface roughness height [m], OpenTidalFarm
   // static final double z0          = 0.043;    // seabed surface roughness height [m], as estimated by Neary in riverine environment http://www.pnnl.gov/main/publications/external/technical_reports/PNNL-20463.pdf, and further discussion here: http://www.homepages.ed.ac.uk/shs/Tidal%20Stream/Baston%20and%20Harris.pdf
-  // static final double z0          = 0.04;    // used by Churchfield for SOWFA tidal turbines
+  // static final double z0          = 0.04;    // used by Churchfield et al. for SOWFA tidal turbines
 
 	///////////////////////////////////////////////////////////////////////////////
 

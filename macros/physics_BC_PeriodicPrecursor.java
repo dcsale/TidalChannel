@@ -13,7 +13,7 @@ import star.flow.*;
 public class physics_BC_PeriodicPrecursor extends StarMacro {
 
  
-  int  nPrecursors = 10;   // number of times to repeat the pre-cursor simulation
+  int  nPrecursors = 2;   // number of times to repeat the pre-cursor simulation
 
   public void execute() {
     execute0();
@@ -79,7 +79,7 @@ public class physics_BC_PeriodicPrecursor extends StarMacro {
 
     xyzInternalTable_0.extract();
 
-    xyzInternalTable_0.export("outputs/tables/outlet_to_inlet.csv", ",");
+    xyzInternalTable_0.export("outputs/outlet_to_inlet.csv", ",");
 
 
 

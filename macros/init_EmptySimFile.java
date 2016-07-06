@@ -24,7 +24,7 @@ public class init_EmptySimFile extends StarMacro {
     Simulation simulation_0 = 
       getActiveSimulation();
 
-    simulation_0.saveState(resolvePath("../empty_case.sim"));
+    simulation_0.saveState(resolvePath("../initial.sim"));
   }
 
   private void execute1() {
