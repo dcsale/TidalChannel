@@ -39,7 +39,7 @@ public class physics_VirtualDisks extends StarMacro {
 
 	///////////////////////////////////////////////////////////////////////////////
 	// USER INPUTS (all these user inputs should be read from a CSV file instead)
-	String path0    = "inputs/turbines.csv";
+	String path0    = "../inputs/turbines.csv";
 
 	///////////////////////////////////////////////////////////////////////////////
 
