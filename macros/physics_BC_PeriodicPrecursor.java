@@ -13,7 +13,7 @@ import star.flow.*;
 public class physics_BC_PeriodicPrecursor extends StarMacro {
 
  
-  int  nPrecursors = 2;   // number of times to repeat the pre-cursor simulation
+  int  nPrecursors = 5;   // number of times to repeat the pre-cursor simulation
 
   public void execute() {
     execute0();

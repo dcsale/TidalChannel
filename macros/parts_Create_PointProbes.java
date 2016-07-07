@@ -22,7 +22,7 @@ public class parts_Create_PointProbes extends StarMacro {
     // USER INPUTS
     //
     // path to CSV file with names and coordinates of point probes (this gets updated from the "mooring model" code) This file should NOT have any empty lines at bottom 
-    String path0    = "inputs/probes.csv";
+    String path0    = "../inputs/probes.csv";
 
     ///////////////////////////////////////////////////////////////////////////////
 

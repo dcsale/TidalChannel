@@ -50,7 +50,7 @@ public class scene_SaveHardcopies extends StarMacro {
     };
 
     // now use this bash script to archive the images, and give numbering to filenames
-    String cmd = "./utilities/archive_images.sh";
+    String cmd = "../utilities/archive_images.sh";
     try {
         Process p = Runtime.getRuntime().exec(new String[]{"bash", "-c", cmd});
     } catch (IOException ex) {

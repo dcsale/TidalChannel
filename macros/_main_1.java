@@ -64,8 +64,8 @@ public class _main_1 extends StarMacro {
 
 
     // these scenes need the parts derived above
-    new StarScript(getActiveSimulation(), new java.io.File(resolvePath("scene_Mesh.java"))).play();
     new StarScript(getActiveSimulation(), new java.io.File(resolvePath("scene_Velocity.java"))).play();
+    new StarScript(getActiveSimulation(), new java.io.File(resolvePath("scene_Mesh.java"))).play();
     new StarScript(getActiveSimulation(), new java.io.File(resolvePath("scene_LineProbes.java"))).play();
     new StarScript(getActiveSimulation(), new java.io.File(resolvePath("scene_BoundaryLayer.java"))).play();
     new StarScript(getActiveSimulation(), new java.io.File(resolvePath("scene_vorticity.java"))).play();

@@ -62,7 +62,7 @@ public class parts_RegionsBoundaryConditions extends StarMacro {
   // static final double inlet_Vx 		= 2.0; 		 // inlet x-velocity [m/s]
   // static final double inlet_Vy 		= 0.0; 		 // inlet y-velocity [m/s]
   // static final double inlet_Vz 		= 0.0; 		 // inlet z-velocity [m/s]
-  // CASE: Tidal Channel (small domain)
+  // // CASE: Tidal Channel (small domain)
   static final double xo          = 0;       // origin x coordinate [m]
   static final double yo          = 0;       // origin y coordinate [m]
   static final double zo          = 0;       // origin z coordinate [m]
@@ -74,6 +74,18 @@ public class parts_RegionsBoundaryConditions extends StarMacro {
   static final double inlet_Vx    = 2.0;     // inlet x-velocity [m/s]
   static final double inlet_Vy    = 0.0;     // inlet y-velocity [m/s]
   static final double inlet_Vz    = 0.0;     // inlet z-velocity [m/s]
+  // CASE: Tidal Channel (small domain) with 2 DOE-RM1 turbines
+  // static final double xo          = 0;       // origin x coordinate [m]
+  // static final double yo          = 0;       // origin y coordinate [m]
+  // static final double zo          = 0;       // origin z coordinate [m]
+  // static final double length      = 1000;    // length in x-dimention (steamwise) [m]
+  // static final double width       = 400;     // length in y-dimention (crossflow) [m]
+  // static final double depth       = 60;      // length in z-dimention (vertical) [m]
+  // static final double bc_TI       = 0.1;     // turbulence intensity for inlet and outlet TI = u' / U [unitless]
+  // static final double bc_Lturb    = 5.0;   // turbulent length scale for inlet and outlet [m]
+  // static final double inlet_Vx    = 2.0;     // inlet x-velocity [m/s]
+  // static final double inlet_Vy    = 0.0;     // inlet y-velocity [m/s]
+  // static final double inlet_Vz    = 0.0;     // inlet z-velocity [m/s]
 
   // Usually z0 is larger than the median grain size; 
   // a first approximation might be z0 =~ 2 * d_90, where d_90 grain size at 
