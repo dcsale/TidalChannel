@@ -45,19 +45,19 @@ public class scene_Mesh extends StarMacro {
     partDisplayer_1.getInputParts().setQuery(null);
 
     Region region_0 = 
-      simulation_0.getRegionManager().getRegion("Block");
+      simulation_0.getRegionManager().getRegion("Region");
 
     Boundary boundary_0 = 
-      region_0.getBoundaryManager().getBoundary("Inlet");
+      region_0.getBoundaryManager().getBoundary("Block.Inlet");
 
     Boundary boundary_1 = 
-      region_0.getBoundaryManager().getBoundary("Left Bank");
+      region_0.getBoundaryManager().getBoundary("Block.Left Bank");
 
     Boundary boundary_2 = 
-      region_0.getBoundaryManager().getBoundary("Outlet");
+      region_0.getBoundaryManager().getBoundary("Block.Outlet");
 
     Boundary boundary_3 = 
-      region_0.getBoundaryManager().getBoundary("Seabed");
+      region_0.getBoundaryManager().getBoundary("Block.Seabed");
 
     PlaneSection planeSection_0 = 
       ((PlaneSection) simulation_0.getPartManager().getObject("plane_crossflow"));

@@ -20,10 +20,11 @@ public class physics_BC_OutletABL extends StarMacro {
       getActiveSimulation();
 
     Region region_0 = 
-      simulation_0.getRegionManager().getRegion("Block");
+    simulation_0.getRegionManager().getRegion("Region");
 
     Boundary boundary_0 = 
-      region_0.getBoundaryManager().getBoundary("Outlet");
+      // region_0.getBoundaryManager().getBoundary("Outlet");
+    region_0.getBoundaryManager().getBoundary("Block.Outlet");
 
     boundary_0.getConditions().get(KwTurbSpecOption.class).setSelected(KwTurbSpecOption.Type.K_OMEGA);
 

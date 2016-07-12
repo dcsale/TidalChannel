@@ -34,7 +34,7 @@ public class parts_SectionPlanesTurbines extends StarMacro {
       Simulation simulation_0 = 
         getActiveSimulation();
       Region region_0 = 
-      simulation_0.getRegionManager().getRegion("Block");
+      simulation_0.getRegionManager().getRegion("Region");
 
 
         //

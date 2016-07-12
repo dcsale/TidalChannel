@@ -56,7 +56,7 @@ public class scene_Velocity_VolumeRenderDataFocus extends StarMacro {
     partDisplayer_6.initialize();
 
     Region region_0 = 
-      simulation_0.getRegionManager().getRegion("Block");
+      simulation_0.getRegionManager().getRegion("Region");
 
     scene_6.getCreatorGroup().setObjects(region_0);
 

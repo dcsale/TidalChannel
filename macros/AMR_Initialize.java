@@ -32,25 +32,25 @@ public class AMR_Initialize extends StarMacro {
       simulation_0.getUnitsManager().getPreferredUnits(new IntVector(new int[] {0, 2, -2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}));
 
     Region region_0 = 
-      simulation_0.getRegionManager().getRegion("Block");
+      simulation_0.getRegionManager().getRegion("Region");
 
     Boundary boundary_0 = 
-      region_0.getBoundaryManager().getBoundary("Inlet");
+      region_0.getBoundaryManager().getBoundary("Block.Inlet");
 
     Boundary boundary_1 = 
-      region_0.getBoundaryManager().getBoundary("Left Bank");
+      region_0.getBoundaryManager().getBoundary("Block.Left Bank");
 
     Boundary boundary_2 = 
-      region_0.getBoundaryManager().getBoundary("Outlet");
+      region_0.getBoundaryManager().getBoundary("Block.Outlet");
 
     Boundary boundary_3 = 
-      region_0.getBoundaryManager().getBoundary("Right Bank");
+      region_0.getBoundaryManager().getBoundary("Block.Right Bank");
 
     Boundary boundary_4 = 
-      region_0.getBoundaryManager().getBoundary("Sea Surface");
+      region_0.getBoundaryManager().getBoundary("Block.Sea Surface");
 
     Boundary boundary_5 = 
-      region_0.getBoundaryManager().getBoundary("Seabed");
+      region_0.getBoundaryManager().getBoundary("Block.Seabed");
 
 
 

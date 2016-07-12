@@ -62,18 +62,18 @@ public class parts_RegionsBoundaryConditions extends StarMacro {
   // static final double inlet_Vx 		= 2.0; 		 // inlet x-velocity [m/s]
   // static final double inlet_Vy 		= 0.0; 		 // inlet y-velocity [m/s]
   // static final double inlet_Vz 		= 0.0; 		 // inlet z-velocity [m/s]
-  // // CASE: Tidal Channel (small domain)
-  static final double xo          = 0;       // origin x coordinate [m]
-  static final double yo          = 0;       // origin y coordinate [m]
-  static final double zo          = 0;       // origin z coordinate [m]
-  static final double length      = 800;    // length in x-dimention (steamwise) [m]
-  static final double width       = 320;     // length in y-dimention (crossflow) [m]
-  static final double depth       = 50;      // length in z-dimention (vertical) [m]
-  static final double bc_TI       = 0.1;     // turbulence intensity for inlet and outlet TI = u' / U [unitless]
-  static final double bc_Lturb    = 2.5;   // turbulent length scale for inlet and outlet [m]
-  static final double inlet_Vx    = 2.0;     // inlet x-velocity [m/s]
-  static final double inlet_Vy    = 0.0;     // inlet y-velocity [m/s]
-  static final double inlet_Vz    = 0.0;     // inlet z-velocity [m/s]
+  // CASE: Tidal Channel (small domain)
+  // static final double xo          = 0;       // origin x coordinate [m]
+  // static final double yo          = 0;       // origin y coordinate [m]
+  // static final double zo          = 0;       // origin z coordinate [m]
+  // static final double length      = 800;    // length in x-dimention (steamwise) [m]
+  // static final double width       = 320;     // length in y-dimention (crossflow) [m]
+  // static final double depth       = 50;      // length in z-dimention (vertical) [m]
+  // static final double bc_TI       = 0.1;     // turbulence intensity for inlet and outlet TI = u' / U [unitless]
+  // static final double bc_Lturb    = 2.5;   // turbulent length scale for inlet and outlet [m]
+  // static final double inlet_Vx    = 2.0;     // inlet x-velocity [m/s]
+  // static final double inlet_Vy    = 0.0;     // inlet y-velocity [m/s]
+  // static final double inlet_Vz    = 0.0;     // inlet z-velocity [m/s]
   // CASE: Tidal Channel (small domain) with 2 DOE-RM1 turbines
   // static final double xo          = 0;       // origin x coordinate [m]
   // static final double yo          = 0;       // origin y coordinate [m]
@@ -86,6 +86,19 @@ public class parts_RegionsBoundaryConditions extends StarMacro {
   // static final double inlet_Vx    = 2.0;     // inlet x-velocity [m/s]
   // static final double inlet_Vy    = 0.0;     // inlet y-velocity [m/s]
   // static final double inlet_Vz    = 0.0;     // inlet z-velocity [m/s]
+
+  // CASE: Bamfield Flume
+  static final double xo          = 0;       // origin x coordinate [m]
+  static final double yo          = 0;       // origin y coordinate [m]
+  static final double zo          = 0;       // origin z coordinate [m]
+  static final double length      = 12.3;    // length in x-dimention (steamwise) [m]
+  static final double width       = 1.0;     // length in y-dimention (crossflow) [m]
+  static final double depth       = 0.8;      // length in z-dimention (vertical) [m]
+  static final double bc_TI       = 0.1;     // turbulence intensity for inlet and outlet TI = u' / U [unitless]
+  static final double bc_Lturb    = 0.05625;   // turbulent length scale for inlet and outlet [m]
+  static final double inlet_Vx    = 0.9;     // inlet x-velocity [m/s]
+  static final double inlet_Vy    = 0.0;     // inlet y-velocity [m/s]
+  static final double inlet_Vz    = 0.0;     // inlet z-velocity [m/s]
 
   // Usually z0 is larger than the median grain size; 
   // a first approximation might be z0 =~ 2 * d_90, where d_90 grain size at 
@@ -158,15 +171,17 @@ public class parts_RegionsBoundaryConditions extends StarMacro {
     // Split the Block part into surfaces, splitting by angle at the sharp corners of Block
     PartSurface partSurface_0 = 
       ((PartSurface) simpleBlockPart_0.getPartSurfaceManager().getPartSurface("Block Surface"));
+    
     simpleBlockPart_0.getPartSurfaceManager().splitPartSurfacesByAngle(new NeoObjectVector(new Object[] {partSurface_0}), 89.0);
+    
     simulation_0.getRegionManager().newRegionsFromParts(new NeoObjectVector(new Object[] {simpleBlockPart_0}), "OneRegionPerPart", null, "OneBoundaryPerPartSurface", null, "OneFeatureCurve", null, true);
     
     // NOTE: there is a very annoying "feature" that changes the ordering of how the block
     // is split into surfaces ... if the X-Y aspect ratio of the boxes switches orientations
     // you will get unexpected boundary conditions ... need to detect and correct this
-    if (length <= width) {
-            // partSurface_0.setPresentationName("Inlet");
-            partSurface_0.setPresentationName("Sea Surface");
+    // if (length <= width) {
+            partSurface_0.setPresentationName("Inlet");
+            // partSurface_0.setPresentationName("Sea Surface");
 
 
             PartSurface partSurface_1 = 
@@ -176,19 +191,20 @@ public class parts_RegionsBoundaryConditions extends StarMacro {
 
 
             PartSurface partSurface_2 = 
-              ((PartSurface) simpleBlockPart_0.getPartSurfaceManager().getPartSurface("Block Surface 3"));
+              ((PartSurface) simpleBlockPart_0.getPartSurfaceManager().getPartSurface("Block Surface 4"));
             // partSurface_2.setPresentationName("Seabed");
-              partSurface_2.setPresentationName("Inlet");
+            partSurface_2.setPresentationName("Sea Surface");
+              // partSurface_2.setPresentationName("Inlet");
 
 
             PartSurface partSurface_3 = 
-              ((PartSurface) simpleBlockPart_0.getPartSurfaceManager().getPartSurface("Block Surface 4"));
+              ((PartSurface) simpleBlockPart_0.getPartSurfaceManager().getPartSurface("Block Surface 5"));
             // partSurface_3.setPresentationName("Right Bank");
               partSurface_3.setPresentationName("Left Bank");
 
 
             PartSurface partSurface_4 = 
-              ((PartSurface) simpleBlockPart_0.getPartSurfaceManager().getPartSurface("Block Surface 5"));
+              ((PartSurface) simpleBlockPart_0.getPartSurfaceManager().getPartSurface("Block Surface 3"));
             // partSurface_4.setPresentationName("Sea Surface");
               partSurface_4.setPresentationName("Seabed");
 
@@ -197,40 +213,49 @@ public class parts_RegionsBoundaryConditions extends StarMacro {
               ((PartSurface) simpleBlockPart_0.getPartSurfaceManager().getPartSurface("Block Surface 6"));
             partSurface_5.setPresentationName("Outlet");
 
-        } else {
-            partSurface_0.setPresentationName("Inlet");
-            // partSurface_0.setPresentationName("Sea Surface");
+//         } else {
+// simulation_0.println("DEBUG");     
 
 
-            PartSurface partSurface_1 = 
-              ((PartSurface) simpleBlockPart_0.getPartSurfaceManager().getPartSurface("Block Surface 2"));
-            partSurface_1.setPresentationName("Left Bank");
-              // partSurface_1.setPresentationName("Right Bank");
 
 
-            PartSurface partSurface_2 = 
-              ((PartSurface) simpleBlockPart_0.getPartSurfaceManager().getPartSurface("Block Surface 3"));
-            partSurface_2.setPresentationName("Seabed");
-              // partSurface_2.setPresentationName("Inlet");
 
 
-            PartSurface partSurface_3 = 
-              ((PartSurface) simpleBlockPart_0.getPartSurfaceManager().getPartSurface("Block Surface 4"));
-            partSurface_3.setPresentationName("Right Bank");
-              // partSurface_3.setPresentationName("Left Bank");
+
+    //         partSurface_0.setPresentationName("Inlet");
+    //       // partSurface_0.setPresentationName("Seabed");
+    //         // partSurface_0.setPresentationName("Sea Surface");
 
 
-            PartSurface partSurface_4 = 
-              ((PartSurface) simpleBlockPart_0.getPartSurfaceManager().getPartSurface("Block Surface 5"));
-            partSurface_4.setPresentationName("Sea Surface");
-              // partSurface_4.setPresentationName("Seabed");
+    //         PartSurface partSurface_1 = 
+    //           ((PartSurface) simpleBlockPart_0.getPartSurfaceManager().getPartSurface("Block Surface 5"));
+    //         partSurface_1.setPresentationName("Left Bank");
+    //           // partSurface_1.setPresentationName("Right Bank");
 
 
-            PartSurface partSurface_5 = 
-              ((PartSurface) simpleBlockPart_0.getPartSurfaceManager().getPartSurface("Block Surface 6"));
-            partSurface_5.setPresentationName("Outlet");
+    //         PartSurface partSurface_2 = 
+    //           ((PartSurface) simpleBlockPart_0.getPartSurfaceManager().getPartSurface("Block Surface 3"));
+    //         partSurface_2.setPresentationName("Seabed");
+    //           // partSurface_2.setPresentationName("Inlet");
 
-    }
+
+    //         PartSurface partSurface_3 = 
+    //           ((PartSurface) simpleBlockPart_0.getPartSurfaceManager().getPartSurface("Block Surface 2"));
+    //         partSurface_3.setPresentationName("Right Bank");
+    //           // partSurface_3.setPresentationName("Left Bank");
+
+
+    //         PartSurface partSurface_4 = 
+    //           ((PartSurface) simpleBlockPart_0.getPartSurfaceManager().getPartSurface("Block Surface 4"));
+    //         partSurface_4.setPresentationName("Sea Surface");
+    //           // partSurface_4.setPresentationName("Seabed");
+
+
+    //         PartSurface partSurface_5 = 
+    //           ((PartSurface) simpleBlockPart_0.getPartSurfaceManager().getPartSurface("Block Surface 6"));
+    //         partSurface_5.setPresentationName("Outlet");
+
+    // }
 
     
 
@@ -239,16 +264,16 @@ public class parts_RegionsBoundaryConditions extends StarMacro {
 	// assign types to Regions and Boundary Conditions
   //
   Region region_0 = 
-    simulation_0.getRegionManager().getRegion("Block");
+    simulation_0.getRegionManager().getRegion("Region");
 
     // NOTE: there is a very annoying "feature" that changes the ordering of how the block
     // is split into surfaces ... if the X-Y aspect ratio of the boxes switches orientations
     // you will get unexpected boundary conditions ... need to detect and correct this
-    if (length <= width) {
+    // if (length <= width) {
       
       // INLET
       Boundary boundary_0 = 
-        region_0.getBoundaryManager().getBoundary("Block Surface 3");
+        region_0.getBoundaryManager().getBoundary("Block Surface");
         boundary_0.setBoundaryType(InletBoundary.class);
         boundary_0.setPresentationName("Inlet");
         boundary_0.getConditions().get(KwTurbSpecOption.class).setSelected(KwTurbSpecOption.Type.INTENSITY_LENGTH_SCALE);
@@ -295,86 +320,13 @@ public class parts_RegionsBoundaryConditions extends StarMacro {
         boundary_1.getConditions().get(WallShearStressOption.class).setSelected(WallShearStressOption.Type.SLIP);
 
       Boundary boundary_3 = 
-        region_0.getBoundaryManager().getBoundary("Block Surface 4");
+        region_0.getBoundaryManager().getBoundary("Block Surface 5");
       // boundary_3.setPresentationName("Right Bank");
         boundary_3.setPresentationName("Left Bank");
         boundary_3.getConditions().get(WallShearStressOption.class).setSelected(WallShearStressOption.Type.SLIP);
 
       Boundary boundary_4 = 
-        region_0.getBoundaryManager().getBoundary("Block Surface");
-        boundary_4.setPresentationName("Sea Surface");
-        boundary_4.getConditions().get(WallShearStressOption.class).setSelected(WallShearStressOption.Type.SLIP);
-
-
-      // SEABED
-      Boundary boundary_2 = 
-        region_0.getBoundaryManager().getBoundary("Block Surface 5");
-        boundary_2.setPresentationName("Seabed");
-        boundary_2.getConditions().get(WallShearStressOption.class).setSelected(WallShearStressOption.Type.NO_SLIP);
-        boundary_2.getConditions().get(WallSurfaceOption.class).setSelected(WallSurfaceOption.Type.ROUGH);
-
-      RoughnessHeightProfile roughnessHeightProfile_0 = 
-        boundary_2.getValues().get(RoughnessHeightProfile.class);
-        roughnessHeightProfile_0.getMethod(ConstantScalarProfileMethod.class).getQuantity().setValue(z0);
-
-
-    } else {
-
-      // INLET
-      Boundary boundary_0 = 
-        region_0.getBoundaryManager().getBoundary("Block Surface");
-        boundary_0.setBoundaryType(InletBoundary.class);
-        boundary_0.setPresentationName("Inlet");
-        boundary_0.getConditions().get(KwTurbSpecOption.class).setSelected(KwTurbSpecOption.Type.INTENSITY_LENGTH_SCALE);
-        boundary_0.getConditions().get(InletVelocityOption.class).setSelected(InletVelocityOption.Type.COMPONENTS);
-
-      TurbulenceIntensityProfile turbulenceIntensityProfile_0 = 
-        boundary_0.getValues().get(TurbulenceIntensityProfile.class);
-        turbulenceIntensityProfile_0.getMethod(ConstantScalarProfileMethod.class).getQuantity().setValue(bc_TI);
-
-      TurbulentLengthScaleProfile turbulentLengthScaleProfile_0 = 
-        boundary_0.getValues().get(TurbulentLengthScaleProfile.class);
-        turbulentLengthScaleProfile_0.getMethod(ConstantScalarProfileMethod.class).getQuantity().setValue(bc_Lturb);
-
-      VelocityProfile velocityProfile_0 = 
-        boundary_0.getValues().get(VelocityProfile.class);
-        velocityProfile_0.getMethod(ConstantVectorProfileMethod.class).getQuantity().setComponents(inlet_Vx, inlet_Vy, inlet_Vz);
-        region_0.getConditions().get(TwoEquationTurbulenceUserSourceOption.class).setSelected(TwoEquationTurbulenceUserSourceOption.Type.AMBIENT);
-
-      AmbientTurbulenceSpecification ambientTurbulenceSpecification_0 = 
-        region_0.getValues().get(AmbientTurbulenceSpecification.class);
-        ambientTurbulenceSpecification_0.setInflowBoundary(boundary_0);
-
-
-      // OUTLET
-      Boundary boundary_5 = 
-        region_0.getBoundaryManager().getBoundary("Block Surface 6");
-        boundary_5.setPresentationName("Outlet");
-        boundary_5.setBoundaryType(PressureBoundary.class);
-        boundary_5.getConditions().get(KwTurbSpecOption.class).setSelected(KwTurbSpecOption.Type.INTENSITY_LENGTH_SCALE);
-
-      TurbulenceIntensityProfile turbulenceIntensityProfile_1 = 
-        boundary_5.getValues().get(TurbulenceIntensityProfile.class);
-        turbulenceIntensityProfile_1.getMethod(ConstantScalarProfileMethod.class).getQuantity().setValue(bc_TI);
-
-      TurbulentLengthScaleProfile turbulentLengthScaleProfile_1 = 
-        boundary_5.getValues().get(TurbulentLengthScaleProfile.class);
-        turbulentLengthScaleProfile_1.getMethod(ConstantScalarProfileMethod.class).getQuantity().setValue(bc_Lturb);
-
-
-      // SIDE WALLS & SEA SURFACE
-      Boundary boundary_1 = 
         region_0.getBoundaryManager().getBoundary("Block Surface 4");
-        boundary_1.setPresentationName("Right Bank");
-        boundary_1.getConditions().get(WallShearStressOption.class).setSelected(WallShearStressOption.Type.SLIP);
-
-      Boundary boundary_3 = 
-        region_0.getBoundaryManager().getBoundary("Block Surface 2");
-        boundary_3.setPresentationName("Left Bank");
-        boundary_3.getConditions().get(WallShearStressOption.class).setSelected(WallShearStressOption.Type.SLIP);
-
-      Boundary boundary_4 = 
-        region_0.getBoundaryManager().getBoundary("Block Surface 5");
         boundary_4.setPresentationName("Sea Surface");
         boundary_4.getConditions().get(WallShearStressOption.class).setSelected(WallShearStressOption.Type.SLIP);
 
@@ -389,33 +341,106 @@ public class parts_RegionsBoundaryConditions extends StarMacro {
       RoughnessHeightProfile roughnessHeightProfile_0 = 
         boundary_2.getValues().get(RoughnessHeightProfile.class);
         roughnessHeightProfile_0.getMethod(ConstantScalarProfileMethod.class).getQuantity().setValue(z0);
+
+
+  //   // } else {
+
+  //     // INLET
+  //     Boundary boundary_0 = 
+  //       region_0.getBoundaryManager().getBoundary("Block Surface");
+  //       boundary_0.setBoundaryType(InletBoundary.class);
+  //       boundary_0.setPresentationName("Inlet");
+  //       boundary_0.getConditions().get(KwTurbSpecOption.class).setSelected(KwTurbSpecOption.Type.INTENSITY_LENGTH_SCALE);
+  //       boundary_0.getConditions().get(InletVelocityOption.class).setSelected(InletVelocityOption.Type.COMPONENTS);
+
+  //     TurbulenceIntensityProfile turbulenceIntensityProfile_0 = 
+  //       boundary_0.getValues().get(TurbulenceIntensityProfile.class);
+  //       turbulenceIntensityProfile_0.getMethod(ConstantScalarProfileMethod.class).getQuantity().setValue(bc_TI);
+
+  //     TurbulentLengthScaleProfile turbulentLengthScaleProfile_0 = 
+  //       boundary_0.getValues().get(TurbulentLengthScaleProfile.class);
+  //       turbulentLengthScaleProfile_0.getMethod(ConstantScalarProfileMethod.class).getQuantity().setValue(bc_Lturb);
+
+  //     VelocityProfile velocityProfile_0 = 
+  //       boundary_0.getValues().get(VelocityProfile.class);
+  //       velocityProfile_0.getMethod(ConstantVectorProfileMethod.class).getQuantity().setComponents(inlet_Vx, inlet_Vy, inlet_Vz);
+  //       region_0.getConditions().get(TwoEquationTurbulenceUserSourceOption.class).setSelected(TwoEquationTurbulenceUserSourceOption.Type.AMBIENT);
+
+  //     AmbientTurbulenceSpecification ambientTurbulenceSpecification_0 = 
+  //       region_0.getValues().get(AmbientTurbulenceSpecification.class);
+  //       ambientTurbulenceSpecification_0.setInflowBoundary(boundary_0);
+
+
+  //     // OUTLET
+  //     Boundary boundary_5 = 
+  //       region_0.getBoundaryManager().getBoundary("Block Surface 6");
+  //       boundary_5.setPresentationName("Outlet");
+  //       boundary_5.setBoundaryType(PressureBoundary.class);
+  //       boundary_5.getConditions().get(KwTurbSpecOption.class).setSelected(KwTurbSpecOption.Type.INTENSITY_LENGTH_SCALE);
+
+  //     TurbulenceIntensityProfile turbulenceIntensityProfile_1 = 
+  //       boundary_5.getValues().get(TurbulenceIntensityProfile.class);
+  //       turbulenceIntensityProfile_1.getMethod(ConstantScalarProfileMethod.class).getQuantity().setValue(bc_TI);
+
+  //     TurbulentLengthScaleProfile turbulentLengthScaleProfile_1 = 
+  //       boundary_5.getValues().get(TurbulentLengthScaleProfile.class);
+  //       turbulentLengthScaleProfile_1.getMethod(ConstantScalarProfileMethod.class).getQuantity().setValue(bc_Lturb);
+
+
+  //     // SIDE WALLS & SEA SURFACE
+  //     Boundary boundary_1 = 
+  //       region_0.getBoundaryManager().getBoundary("Block Surface 2");
+  //       boundary_1.setPresentationName("Right Bank");
+  //       boundary_1.getConditions().get(WallShearStressOption.class).setSelected(WallShearStressOption.Type.SLIP);
+
+  //     Boundary boundary_3 = 
+  //       region_0.getBoundaryManager().getBoundary("Block Surface 5");
+  //       boundary_3.setPresentationName("Left Bank");
+  //       boundary_3.getConditions().get(WallShearStressOption.class).setSelected(WallShearStressOption.Type.SLIP);
+
+  //     Boundary boundary_4 = 
+  //       region_0.getBoundaryManager().getBoundary("Block Surface 4");
+  //       boundary_4.setPresentationName("Sea Surface");
+  //       boundary_4.getConditions().get(WallShearStressOption.class).setSelected(WallShearStressOption.Type.SLIP);
+
+
+  //     // SEABED
+  //     Boundary boundary_2 = 
+  //       region_0.getBoundaryManager().getBoundary("Block Surface 3");
+  //       boundary_2.setPresentationName("Seabed");
+  //       boundary_2.getConditions().get(WallShearStressOption.class).setSelected(WallShearStressOption.Type.NO_SLIP);
+  //       boundary_2.getConditions().get(WallSurfaceOption.class).setSelected(WallSurfaceOption.Type.ROUGH);
+
+  //     RoughnessHeightProfile roughnessHeightProfile_0 = 
+  //       boundary_2.getValues().get(RoughnessHeightProfile.class);
+  //       roughnessHeightProfile_0.getMethod(ConstantScalarProfileMethod.class).getQuantity().setValue(z0);
  
 
 
-    }
+  //   // }
 
 
     
 
 
-    ///////////////////////////////////////////////////////////////////////////////
-	  // after creating the Regions some new Solver options appear
-    //
-    KwTurbViscositySolver kwTurbViscositySolver_0 = 
-      ((KwTurbViscositySolver) simulation_0.getSolverManager().getSolver(KwTurbViscositySolver.class));
+  //   ///////////////////////////////////////////////////////////////////////////////
+	 //  // after creating the Regions some new Solver options appear
+  //   //
+  //   KwTurbViscositySolver kwTurbViscositySolver_0 = 
+  //     ((KwTurbViscositySolver) simulation_0.getSolverManager().getSolver(KwTurbViscositySolver.class));
 
-    kwTurbViscositySolver_0.setMaxTvr(1.0E10);  // this is recommended for ABL high Reynolds # flows
+  //   kwTurbViscositySolver_0.setMaxTvr(1.0E10);  // this is recommended for ABL high Reynolds # flows
 
 
 
-    ///////////////////////////////////////////////////////////////////////////////
-    // setup some stoping criteria (default values will be fine for now)
-    //
-    ResidualMonitor residualMonitor_0 = 
-      ((ResidualMonitor) simulation_0.getMonitorManager().getMonitor("Continuity"));
+  //   ///////////////////////////////////////////////////////////////////////////////
+  //   // setup some stoping criteria (default values will be fine for now)
+  //   //
+  //   ResidualMonitor residualMonitor_0 = 
+  //     ((ResidualMonitor) simulation_0.getMonitorManager().getMonitor("Continuity"));
 
-    MonitorIterationStoppingCriterion monitorIterationStoppingCriterion_0 = 
-      residualMonitor_0.createIterationStoppingCriterion();
+  //   MonitorIterationStoppingCriterion monitorIterationStoppingCriterion_0 = 
+  //     residualMonitor_0.createIterationStoppingCriterion();
 
   } // end execute0()
 } // end public class

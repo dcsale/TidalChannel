@@ -30,13 +30,13 @@ public class update_RegionsBoundaryConditions extends StarMacro {
         Simulation simulation_0 = getActiveSimulation();
 
         Region region_0 =
-                simulation_0.getRegionManager().getRegion("Block");
+                simulation_0.getRegionManager().getRegion("Region");
 
         Units units_0 = 
           ((Units) simulation_0.getUnitsManager().getObject("m"));
 
         Boundary boundary_0 = 
-          region_0.getBoundaryManager().getBoundary("Inlet");
+          region_0.getBoundaryManager().getBoundary("Block.Inlet");
 
         VelocityProfile velocityProfile_0 = 
           boundary_0.getValues().get(VelocityProfile.class);

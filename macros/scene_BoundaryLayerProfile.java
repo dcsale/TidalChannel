@@ -34,25 +34,25 @@ public class scene_BoundaryLayerProfile extends StarMacro {
     planeSection_0.getInputParts().setQuery(null);
 
     Region region_0 = 
-      simulation_0.getRegionManager().getRegion("Block");
+      simulation_0.getRegionManager().getRegion("Region");
 
     Boundary boundary_0 = 
-      region_0.getBoundaryManager().getBoundary("Inlet");
+      region_0.getBoundaryManager().getBoundary("Block.Inlet");
 
     Boundary boundary_1 = 
-      region_0.getBoundaryManager().getBoundary("Left Bank");
+      region_0.getBoundaryManager().getBoundary("Block.Left Bank");
 
     Boundary boundary_2 = 
-      region_0.getBoundaryManager().getBoundary("Outlet");
+      region_0.getBoundaryManager().getBoundary("Block.Outlet");
 
     Boundary boundary_3 = 
-      region_0.getBoundaryManager().getBoundary("Right Bank");
+      region_0.getBoundaryManager().getBoundary("Block.Right Bank");
 
     Boundary boundary_4 = 
-      region_0.getBoundaryManager().getBoundary("Sea Surface");
+      region_0.getBoundaryManager().getBoundary("Block.Sea Surface");
 
     Boundary boundary_5 = 
-      region_0.getBoundaryManager().getBoundary("Seabed");
+      region_0.getBoundaryManager().getBoundary("Block.Seabed");
 
     planeSection_0.getInputParts().setObjects(region_0, boundary_0, boundary_1, boundary_2, boundary_3, boundary_4, boundary_5);
 

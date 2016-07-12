@@ -58,7 +58,7 @@ public class scene_VirtualDisks_Reports extends StarMacro {
 	  	simulation_0.getUnitsManager().getPreferredUnits(new IntVector(new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}));
 
 	Region region_0 = 
-		simulation_0.getRegionManager().getRegion("Block");
+		simulation_0.getRegionManager().getRegion("Region");
 
 	VirtualDiskModel virtualDiskModel_0 = 
 		physicsContinuum_0.getModelManager().getModel(VirtualDiskModel.class);

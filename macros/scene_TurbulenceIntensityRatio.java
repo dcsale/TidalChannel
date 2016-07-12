@@ -24,7 +24,7 @@ public class scene_TurbulenceIntensityRatio extends StarMacro {
       getActiveSimulation();
 
     Region region_0 = 
-      simulation_0.getRegionManager().getRegion("Block");
+      simulation_0.getRegionManager().getRegion("Region");
 
 
 

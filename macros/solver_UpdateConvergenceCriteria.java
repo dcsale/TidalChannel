@@ -10,6 +10,8 @@ package macro;
 import java.util.*;
 import star.common.*;
 import star.base.neo.*;
+import star.turbulence.*;
+import star.kwturb.*;
 
 public class solver_UpdateConvergenceCriteria extends StarMacro {
 
@@ -36,6 +38,31 @@ private void execute0() {
 
 	Simulation simulation_0 = 
 	getActiveSimulation();
+
+
+
+	///////////////////////////////////////////////////////////////////////////////
+  	// after creating the Regions some new Solver options appear
+    //
+    KwTurbViscositySolver kwTurbViscositySolver_0 = 
+      ((KwTurbViscositySolver) simulation_0.getSolverManager().getSolver(KwTurbViscositySolver.class));
+
+    kwTurbViscositySolver_0.setMaxTvr(1.0E10);  // this is recommended for ABL high Reynolds # flows
+
+
+
+    ///////////////////////////////////////////////////////////////////////////////
+    // setup some stoping criteria (default values will be fine for now)
+    //
+    ResidualMonitor residualMonitor_0 = 
+      ((ResidualMonitor) simulation_0.getMonitorManager().getMonitor("Continuity"));
+
+    MonitorIterationStoppingCriterion monitorIterationStoppingCriterion_0 = 
+      residualMonitor_0.createIterationStoppingCriterion();
+
+
+
+
 
 
 	MonitorIterationStoppingCriterion monitorIterationStoppingCriterion_1 = 

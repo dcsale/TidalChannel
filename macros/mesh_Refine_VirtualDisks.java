@@ -737,7 +737,7 @@ simulation_0.println("names(i) = " + names.get(i));
 		  simulation_0.getUnitsManager().getPreferredUnits(new IntVector(new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}));
 
 		Region region_0 = 
-		  simulation_0.getRegionManager().getRegion("Block");
+		  simulation_0.getRegionManager().getRegion("Region");
 
 		for (int i = 0; i < nVirtualDisks; i++) {
 

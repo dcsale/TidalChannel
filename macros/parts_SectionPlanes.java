@@ -13,9 +13,12 @@ public class parts_SectionPlanes extends StarMacro {
   static final double xo          = 0;       // origin x coordinate [m]
   static final double yo          = 0;       // origin y coordinate [m]
   static final double zo          = 0;       // origin z coordinate [m]
-  static final double length            = 800;     // length in x-dimention (steamwise) [m]
-  static final double width           = 320;       // length in y-dimention (crossflow) [m]
-  static final double depth           = 50;          // length in z-dimention (vertical) [m]
+  // static final double length            = 12.3;     // length in x-dimention (steamwise) [m]
+  // static final double width           = 1.0;       // length in y-dimention (crossflow) [m]
+  // static final double depth           = 0.8;          // length in z-dimention (vertical) [m]
+  static final double length      = 1000;     // length in x-dimention (steamwise) [m]
+  static final double width       = 400;     // length in y-dimention (crossflow) [m]
+  static final double depth       = 60;      // length in z-dimention (vertical) [m]
 
 
   public void execute() {
@@ -31,7 +34,7 @@ public class parts_SectionPlanes extends StarMacro {
       simulation_0.getUnitsManager().getPreferredUnits(new IntVector(new int[] {0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}));
 
     Region region_0 = 
-      simulation_0.getRegionManager().getRegion("Block");
+      simulation_0.getRegionManager().getRegion("Region");
 
 
 

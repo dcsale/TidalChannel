@@ -50,10 +50,10 @@ public class scene_Mesh_2 extends StarMacro {
     scalarDisplayer_0.getInputParts().setQuery(null);
 
     Region region_0 = 
-      simulation_0.getRegionManager().getRegion("Block");
+      simulation_0.getRegionManager().getRegion("Region");
 
     Boundary boundary_0 = 
-      region_0.getBoundaryManager().getBoundary("Seabed");
+      region_0.getBoundaryManager().getBoundary("Block.Seabed");
 
     scalarDisplayer_0.getInputParts().setObjects(boundary_0);
 
@@ -67,10 +67,10 @@ public class scene_Mesh_2 extends StarMacro {
     partDisplayer_0.getInputParts().setQuery(null);
 
     Boundary boundary_1 = 
-      region_0.getBoundaryManager().getBoundary("Inlet");
+      region_0.getBoundaryManager().getBoundary("Block.Inlet");
 
     Boundary boundary_2 = 
-      region_0.getBoundaryManager().getBoundary("Left Bank");
+      region_0.getBoundaryManager().getBoundary("Block.Left Bank");
 
     PlaneSection planeSection_0 = 
       ((PlaneSection) simulation_0.getPartManager().getObject("plane-xz"));

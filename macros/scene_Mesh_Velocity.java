@@ -32,7 +32,7 @@ public class scene_Mesh_Velocity extends StarMacro {
       Simulation simulation_0 = 
         getActiveSimulation();
       Region region_0 = 
-      simulation_0.getRegionManager().getRegion("Block");
+      simulation_0.getRegionManager().getRegion("Region");
 
 
     //     //
@@ -174,16 +174,16 @@ public class scene_Mesh_Velocity extends StarMacro {
     partDisplayer_1.getInputParts().setQuery(null);
 
     Boundary boundary_0 = 
-      region_0.getBoundaryManager().getBoundary("Inlet");
+      region_0.getBoundaryManager().getBoundary("Block.Inlet");
 
     Boundary boundary_1 = 
-      region_0.getBoundaryManager().getBoundary("Left Bank");
+      region_0.getBoundaryManager().getBoundary("Block.Left Bank");
 
     Boundary boundary_2 = 
-      region_0.getBoundaryManager().getBoundary("Outlet");
+      region_0.getBoundaryManager().getBoundary("Block.Outlet");
 
     Boundary boundary_3 = 
-      region_0.getBoundaryManager().getBoundary("Seabed");
+      region_0.getBoundaryManager().getBoundary("Block.Seabed");
 
     partDisplayer_1.getInputParts().setObjects(boundary_0, boundary_1, boundary_2, boundary_3, planeSection_4, planeSection_3, planeSection_5);
 

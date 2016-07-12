@@ -33,7 +33,7 @@ public class scene_Streamlines extends StarMacro {
     partDisplayer_6.initialize();
 
     Region region_0 = 
-      simulation_0.getRegionManager().getRegion("Block");
+      simulation_0.getRegionManager().getRegion("Region");
 
     scene_0.getCreatorGroup().setObjects(region_0);
 
@@ -45,7 +45,7 @@ public class scene_Streamlines extends StarMacro {
     scene_0.setTransparencyOverrideMode(1);
 
     Boundary boundary_0 = 
-      region_0.getBoundaryManager().getBoundary("Inlet");
+      region_0.getBoundaryManager().getBoundary("Block.Inlet");
 
     PrimitiveFieldFunction primitiveFieldFunction_0 = 
       ((PrimitiveFieldFunction) simulation_0.getFieldFunctionManager().getFunction("Velocity"));

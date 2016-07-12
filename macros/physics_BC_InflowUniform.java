@@ -14,17 +14,34 @@ public class physics_BC_InflowUniform extends StarMacro {
   ///////////////////////////////////////////////////////////////////////////////
   // USER INPUTS
   //
-  static final double density             = 1025;      // fluid density [kg/m^2]
-  static final double dynamic_viscosity   = 0.00108;   // fluid dynamic viscosity [Pa-s]
-  static final double init_TI             = 0.1;       // turbulence intensity, TI = u' / U [unitless]
-  static final double init_Lturb          = 3.125;     // turbulent length scale [m]
-  static final double init_Vturb          = 0.1;       // turbulent velocity scale [m/s]
-  static final double init_Vx             = 0.001;       // initial x-velocity [m/s]    NOTE: do not start from 0 because sometime field functions may divide by 0
+  // Flume Case
+  // static final double density             = 997;         // fluid density [kg/m^2]
+  // static final double dynamic_viscosity   = 0.00108;     // fluid dynamic viscosity [Pa-s]
+  // static final double init_TI             = 0.1;         // turbulence intensity, TI = u' / U [unitless]
+  // static final double init_Lturb          = 0.05625;     // turbulent length scale [m]
+  // static final double init_Vturb          = 0.1;         // turbulent velocity scale [m/s]
+  // static final double init_Vx             = 0.9;         // initial x-velocity [m/s]    NOTE: do not start from 0 because sometime field functions may divide by 0
+  // static final double init_Vy             = 0.001;       // initial y-velocity [m/s]
+  // static final double init_Vz             = 0.001;       // initial z-velocity [m/s]
+  // static final double inlet_Vx            = 0.9;         // inlet x-velocity [m/s]
+  // static final double inlet_Vy            = 0.0;         // inlet y-velocity [m/s]
+  // static final double inlet_Vz            = 0.0;         // inlet z-velocity [m/s]
+
+
+  // Tidal Channel Case
+  static final double density             = 1025;         // fluid density [kg/m^2]
+  static final double dynamic_viscosity   = 0.00108;     // fluid dynamic viscosity [Pa-s]
+  static final double init_TI             = 0.1;         // turbulence intensity, TI = u' / U [unitless]
+  static final double init_Lturb          = 2.5;     // turbulent length scale [m]
+  static final double init_Vturb          = 0.1;         // turbulent velocity scale [m/s]
+  static final double init_Vx             = 2.0;         // initial x-velocity [m/s]    NOTE: do not start from 0 because sometime field functions may divide by 0
   static final double init_Vy             = 0.001;       // initial y-velocity [m/s]
   static final double init_Vz             = 0.001;       // initial z-velocity [m/s]
-  static final double inlet_Vx    = 2.0;     // inlet x-velocity [m/s]
-  static final double inlet_Vy    = 0.0;     // inlet y-velocity [m/s]
-  static final double inlet_Vz    = 0.0;     // inlet z-velocity [m/s]
+  static final double inlet_Vx            = 2.0;         // inlet x-velocity [m/s]
+  static final double inlet_Vy            = 0.0;         // inlet y-velocity [m/s]
+  static final double inlet_Vz            = 0.0;         // inlet z-velocity [m/s]
+
+  
   ///////////////////////////////////////////////////////////////////////////////
 
   public void execute() {
@@ -41,7 +58,7 @@ public class physics_BC_InflowUniform extends StarMacro {
 
 
     Region region_0 = 
-      simulation_0.getRegionManager().getRegion("Block");
+      simulation_0.getRegionManager().getRegion("Region");
 
 
       ///////////////////////////////////////////////////////////////////////////////
@@ -89,9 +106,11 @@ public class physics_BC_InflowUniform extends StarMacro {
     
 
     Boundary boundary_1 = 
-      region_0.getBoundaryManager().getBoundary("Inlet");
+      // region_0.getBoundaryManager().getBoundary("Inlet");
+    region_0.getBoundaryManager().getBoundary("Block.Inlet");
 
     boundary_1.getConditions().get(KwTurbSpecOption.class).setSelected(KwTurbSpecOption.Type.INTENSITY_LENGTH_SCALE);
+    boundary_1.getConditions().get(InletVelocityOption.class).setSelected(InletVelocityOption.Type.COMPONENTS);
 
 
 
@@ -118,17 +137,27 @@ public class physics_BC_InflowUniform extends StarMacro {
     VelocityProfile velocityProfile_1 = 
       boundary_1.getValues().get(VelocityProfile.class);
 
+    // boundary_1.getConditions().get(InletVelocityOption.class).setSelected(InletVelocityOption.Type.COMPONENTS);
+
     velocityProfile_1.setMethod(ConstantVectorProfileMethod.class);
 
     velocityProfile_1.getMethod(ConstantVectorProfileMethod.class).getQuantity().setComponents(inlet_Vx, inlet_Vy, inlet_Vz);
 
+// Boundary boundary_3 = 
+//       region_2.getBoundaryManager().getBoundary("Block.Inlet");
 
+//     boundary_3.getConditions().get(InletVelocityOption.class).setSelected(InletVelocityOption.Type.COMPONENTS);
+
+//     VelocityProfile velocityProfile_0 = 
+//       boundary_3.getValues().get(VelocityProfile.class);
+
+//     velocityProfile_0.getMethod(ConstantVectorProfileMethod.class).getQuantity().setComponents(0.1, 1.0, 2.0);
 
 
 
 
     Boundary boundary_3 = 
-      region_0.getBoundaryManager().getBoundary("Outlet");
+      region_0.getBoundaryManager().getBoundary("Block.Outlet");
 
     boundary_3.getConditions().get(KwTurbSpecOption.class).setSelected(KwTurbSpecOption.Type.INTENSITY_LENGTH_SCALE);
 

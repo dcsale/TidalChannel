@@ -35,6 +35,7 @@ public class fieldFunction_ABL_inlet extends StarMacro {
     userFieldFunction_1.setFunctionName("WINDSPEED");
 
     // userFieldFunction_1.setDefinition("[-10.3,0,0]");
+    // userFieldFunction_1.setDefinition("[0.9,0,0]");
     userFieldFunction_1.setDefinition("[2.0,0,0]");
 
 
@@ -66,8 +67,8 @@ public class fieldFunction_ABL_inlet extends StarMacro {
 
     userFieldFunction_3.setFunctionName("zh");
 
-    // userFieldFunction_3.setDefinition("1000");
     userFieldFunction_3.setDefinition("60");
+    // userFieldFunction_3.setDefinition("0.8");
     
 
 
@@ -97,8 +98,8 @@ public class fieldFunction_ABL_inlet extends StarMacro {
 
     userFieldFunction_5.setFunctionName("zref");    
 
-    // userFieldFunction_5.setDefinition("[0,0,10]");
     userFieldFunction_5.setDefinition("[0,0,30]");
+    // userFieldFunction_5.setDefinition("[0,0,0.4]");
 
     userFieldFunction_5.setDimensionsVector(new IntVector(new int[] {0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}));
 

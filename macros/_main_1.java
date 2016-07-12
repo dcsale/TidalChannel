@@ -37,8 +37,11 @@ public class _main_1 extends StarMacro {
     new StarScript(getActiveSimulation(), new java.io.File(resolvePath("physics_SST_KOmega.java"))).play();
     // new StarScript(getActiveSimulation(), new java.io.File(resolvePath("physics_KEpsilon_REB.java"))).play();
     // new StarScript(getActiveSimulation(), new java.io.File(resolvePath("physics_RST_QLS.java"))).play();
-    new StarScript(getActiveSimulation(), new java.io.File(resolvePath("parts_RegionsBoundaryConditions.java"))).play();
+    // new StarScript(getActiveSimulation(), new java.io.File(resolvePath("parts_RegionsBoundaryConditions.java"))).play();
+    new StarScript(getActiveSimulation(), new java.io.File(resolvePath("parts_FluidRegion_BC.java"))).play();
+    new StarScript(getActiveSimulation(), new java.io.File(resolvePath("physics_BC_RoughSurface.java"))).play();
     new StarScript(getActiveSimulation(), new java.io.File(resolvePath("physics_BC_InflowUniform.java"))).play();
+
     
 
     // setup the meshing controls, add virtual disks (with local mesh refinements), and then run the mesher
@@ -79,6 +82,7 @@ public class _main_1 extends StarMacro {
     
 
 
+    new StarScript(getActiveSimulation(), new java.io.File(resolvePath("solver_OptimalSettings.java"))).play();
     new StarScript(getActiveSimulation(), new java.io.File(resolvePath("solver_UpdateConvergenceCriteria.java"))).play();
     new StarScript(getActiveSimulation(), new java.io.File(resolvePath("solver_Run.java"))).play();
     // new StarScript(getActiveSimulation(), new java.io.File(resolvePath("solver_RunAMR.java"))).play();

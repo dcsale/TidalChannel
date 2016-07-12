@@ -33,17 +33,31 @@ public class physics_SST_KOmega extends StarMacro {
 	///////////////////////////////////////////////////////////////////////////////
 	// USER INPUTS
 	//
-	static final double density 			      = 1025;		   // fluid density [kg/m^2]
-	static final double dynamic_viscosity 	= 0.00108; 	 // fluid dynamic viscosity [Pa-s]
-	static final double init_TI 			      = 0.1; 		   // turbulence intensity, TI = u' / U [unitless]
-	static final double init_Lturb 			    = 3.125; 	   // turbulent length scale [m]
-	static final double init_Vturb 			    = 0.1; 		   // turbulent velocity scale [m/s]
-	static final double init_Vx 			      = 0.001; 		   // initial x-velocity [m/s]    NOTE: do not start from 0 because sometime field functions may divide by 0
-	static final double init_Vy 			      = 0.001; 		   // initial y-velocity [m/s]
-	static final double init_Vz 			      = 0.001; 		   // initial z-velocity [m/s]
-  static final double inlet_Vx    = 2.0;     // inlet x-velocity [m/s]
-  static final double inlet_Vy    = 0.0;     // inlet y-velocity [m/s]
-  static final double inlet_Vz    = 0.0;     // inlet z-velocity [m/s]
+	// Flume Case
+ //  static final double density 			      = 997;		   // fluid density [kg/m^3]
+	// static final double dynamic_viscosity 	= 0.00108; 	 // fluid dynamic viscosity [Pa-s]
+	// static final double init_TI 			      = 0.1; 		   // turbulence intensity, TI = u' / U [unitless]
+	// static final double init_Lturb 			    = 0.05625; 	   // turbulent length scale [m]
+	// static final double init_Vturb 			    = 0.1; 		   // turbulent velocity scale [m/s]
+	// static final double init_Vx 			      = 0.001; 		   // initial x-velocity [m/s]    NOTE: do not start from 0 because sometime field functions may divide by 0
+	// static final double init_Vy 			      = 0.001; 		   // initial y-velocity [m/s]
+	// static final double init_Vz 			      = 0.001; 		   // initial z-velocity [m/s]
+ //  static final double inlet_Vx    = 0.9;     // inlet x-velocity [m/s]
+ //  static final double inlet_Vy    = 0.0;     // inlet y-velocity [m/s]
+ //  static final double inlet_Vz    = 0.0;     // inlet z-velocity [m/s]
+
+  // Tidal Channel Case
+  static final double density             = 1025;         // fluid density [kg/m^3]
+  static final double dynamic_viscosity   = 0.00108;     // fluid dynamic viscosity [Pa-s]
+  static final double init_TI             = 0.1;         // turbulence intensity, TI = u' / U [unitless]
+  static final double init_Lturb          = 2.5;     // turbulent length scale [m]
+  static final double init_Vturb          = 0.1;         // turbulent velocity scale [m/s]
+  static final double init_Vx             = 2.0;         // initial x-velocity [m/s]    NOTE: do not start from 0 because sometime field functions may divide by 0
+  static final double init_Vy             = 0.001;       // initial y-velocity [m/s]
+  static final double init_Vz             = 0.001;       // initial z-velocity [m/s]
+  static final double inlet_Vx            = 2.0;         // inlet x-velocity [m/s]
+  static final double inlet_Vy            = 0.0;         // inlet y-velocity [m/s]
+  static final double inlet_Vz            = 0.0;         // inlet z-velocity [m/s]
 	///////////////////////////////////////////////////////////////////////////////
 
 	
@@ -66,7 +80,7 @@ public class physics_SST_KOmega extends StarMacro {
       simulation_0.getContinuumManager().createContinuum(PhysicsContinuum.class);
 
     // Region region_0 = 
-    //   simulation_0.getRegionManager().getRegion("Block");
+    //   simulation_0.getRegionManager().getRegion("Region");
 
     physicsContinuum_0.enable(ThreeDimensionalModel.class);
 

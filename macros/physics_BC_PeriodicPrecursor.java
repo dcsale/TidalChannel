@@ -13,7 +13,7 @@ import star.flow.*;
 public class physics_BC_PeriodicPrecursor extends StarMacro {
 
  
-  int  nPrecursors = 5;   // number of times to repeat the pre-cursor simulation
+  int  nPrecursors = 3;   // number of times to repeat the pre-cursor simulation
 
   public void execute() {
     execute0();
@@ -44,10 +44,10 @@ public class physics_BC_PeriodicPrecursor extends StarMacro {
     xyzInternalTable_0.setPresentationName("outlet");
 
     Region region_0 = 
-      simulation_0.getRegionManager().getRegion("Block");
+      simulation_0.getRegionManager().getRegion("Region");
 
     Boundary boundary_0 = 
-      region_0.getBoundaryManager().getBoundary("Outlet");
+      region_0.getBoundaryManager().getBoundary("Block.Outlet");
 
 
 
@@ -137,7 +137,7 @@ public class physics_BC_PeriodicPrecursor extends StarMacro {
 
 
     Boundary boundary_1 = 
-      region_0.getBoundaryManager().getBoundary("Inlet");
+      region_0.getBoundaryManager().getBoundary("Block.Inlet");
 
     boundary_1.getConditions().get(KwTurbSpecOption.class).setSelected(KwTurbSpecOption.Type.K_OMEGA);
 

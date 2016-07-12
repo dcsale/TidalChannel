@@ -69,10 +69,11 @@ public class physics_BC_InflowABL extends StarMacro {
     turbulentKineticEnergyProfile_0.getMethod(FunctionScalarProfileMethod.class).setFieldFunction(userFieldFunction_35);
 
     Region region_0 = 
-      simulation_0.getRegionManager().getRegion("Block");
+      simulation_0.getRegionManager().getRegion("Region");
 
     Boundary boundary_0 = 
-      region_0.getBoundaryManager().getBoundary("Inlet");
+      // region_0.getBoundaryManager().getBoundary("Inlet");
+    region_0.getBoundaryManager().getBoundary("Block.Inlet");
 
     boundary_0.getConditions().get(KwTurbSpecOption.class).setSelected(KwTurbSpecOption.Type.K_OMEGA);
 
