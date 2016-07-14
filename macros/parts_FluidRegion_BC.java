@@ -6,6 +6,7 @@ import java.util.*;
 
 import star.turbulence.*;
 import star.common.*;
+import star.flow.*;
 import star.base.neo.*;
 import star.vis.*;
 import star.meshing.*;
@@ -55,9 +56,9 @@ public class parts_FluidRegion_BC extends StarMacro {
   // static final double xo          = 0;       // origin x coordinate [m]
   // static final double yo          = 0;       // origin y coordinate [m]
   // static final double zo          = 0;       // origin z coordinate [m]
-  // static final double length      = 12.3;    // length in x-dimention (steamwise) [m]
-  // static final double width       = 1.0;     // length in y-dimention (crossflow) [m]
-  // static final double depth       = 0.8;      // length in z-dimention (vertical) [m]
+  // static final double length      = 12.3;    // length in x-dimension (steamwise) [m]
+  // static final double width       = 1.0;     // length in y-dimension (crossflow) [m]
+  // static final double depth       = 0.8;     // length in z-dimension (vertical) [m]
 
 
 
@@ -231,6 +232,28 @@ public class parts_FluidRegion_BC extends StarMacro {
       region_0.getBoundaryManager().getBoundary("Block.Outlet");
 
       boundary_2.setBoundaryType(PressureBoundary.class);
+
+
+
+    Boundary boundary_3 = 
+      region_0.getBoundaryManager().getBoundary("Block.Left Bank");
+
+    boundary_3.getConditions().get(WallShearStressOption.class).setSelected(WallShearStressOption.Type.SLIP);
+
+    Boundary boundary_4 = 
+      region_0.getBoundaryManager().getBoundary("Block.Right Bank");
+
+    boundary_4.getConditions().get(WallShearStressOption.class).setSelected(WallShearStressOption.Type.SLIP);
+
+    Boundary boundary_5 = 
+      region_0.getBoundaryManager().getBoundary("Block.Sea Surface");
+
+    boundary_5.getConditions().get(WallShearStressOption.class).setSelected(WallShearStressOption.Type.SLIP);
+
+    Boundary boundary_6 = 
+      region_0.getBoundaryManager().getBoundary("Block.Seabed");
+
+    boundary_6.getConditions().get(WallShearStressOption.class).setSelected(WallShearStressOption.Type.SLIP);
 
 
     
