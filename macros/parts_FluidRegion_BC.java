@@ -45,12 +45,12 @@ public class parts_FluidRegion_BC extends StarMacro {
   // static final double depth       = 50;      // length in z-dimention (vertical) [m]
 
   // CASE: Tidal Channel (small domain) with 2 DOE-RM1 turbines
-  static final double xo          = 0;       // origin x coordinate [m]
-  static final double yo          = 0;       // origin y coordinate [m]
-  static final double zo          = 0;       // origin z coordinate [m]
-  static final double length      = 1000;    // length in x-dimention (steamwise) [m]
-  static final double width       = 400;     // length in y-dimention (crossflow) [m]
-  static final double depth       = 60;      // length in z-dimention (vertical) [m]
+  // static final double xo          = 0;       // origin x coordinate [m]
+  // static final double yo          = 0;       // origin y coordinate [m]
+  // static final double zo          = 0;       // origin z coordinate [m]
+  // static final double length      = 1000;    // length in x-dimention (steamwise) [m]
+  // static final double width       = 400;     // length in y-dimention (crossflow) [m]
+  // static final double depth       = 60;      // length in z-dimention (vertical) [m]
 
   // CASE: Bamfield Flume
   // static final double xo          = 0;       // origin x coordinate [m]
@@ -90,6 +90,54 @@ public class parts_FluidRegion_BC extends StarMacro {
 
 
 
+
+
+
+    // UserFieldFunction userFieldFunction_0 = 
+    //   // ((UserFieldFunction) simulation_0.getFieldFunctionManager().getFunction("__length"));
+    //   ((UserFieldFunction) simulation_0.getFieldFunctionManager().getFunction("${__length}"));
+
+    // // turbulenceIntensityProfile_0.getMethod(FunctionScalarProfileMethod.class).setFieldFunction(userFieldFunction_0);
+
+    // // simulation_0.println("DEBUG 0: __length = " + "${__length}");
+    //   // simulation_0.println("DEBUG 0: __length = " + userFieldFunction_0);
+    //   simulation_0.println("DEBUG 0: __length = " + "${__length}");
+
+
+      // get the user inputs field functions
+      UserFieldFunction userFieldFunction_0 = 
+      ((UserFieldFunction) simulation_0.getFieldFunctionManager().getFunction("__xo"));
+      UserFieldFunction userFieldFunction_1 = 
+      ((UserFieldFunction) simulation_0.getFieldFunctionManager().getFunction("__yo"));
+      UserFieldFunction userFieldFunction_2 = 
+      ((UserFieldFunction) simulation_0.getFieldFunctionManager().getFunction("__zo"));
+      UserFieldFunction userFieldFunction_3 = 
+      ((UserFieldFunction) simulation_0.getFieldFunctionManager().getFunction("__length"));
+      UserFieldFunction userFieldFunction_4 = 
+      ((UserFieldFunction) simulation_0.getFieldFunctionManager().getFunction("__width"));
+      UserFieldFunction userFieldFunction_5 = 
+      ((UserFieldFunction) simulation_0.getFieldFunctionManager().getFunction("__depth"));
+
+      // simulation_0.println("DEBUG 0: ${__length} = " + userFieldFunction_33);
+      // simulation_0.println("DEBUG 0: ${__length} = " + Double.parseDouble(userFieldFunction_33));
+      // simulation_0.println("DEBUG 0: length = " + userFieldFunction_33.getDefinition());
+      // String userFieldFunction_33.getDefinition()
+      // simulation_0.println("DEBUG 0: length class = " + Object.getClass(userFieldFunction_33));
+
+// SimpleBlockPart simpleBlockPart_0 = 
+//       ((SimpleBlockPart) simulation_0.get(SimulationPartManager.class).getPart("Block"));
+
+//     Coordinate coordinate_0 = 
+//       simpleBlockPart_0.getCorner2();
+
+//     Units units_0 = 
+//       ((Units) simulation_0.getUnitsManager().getObject("m"));
+
+//     coordinate_0.setCoordinate(units_0, units_0, units_0, new DoubleVector(new double[] {55.0, 400.0, 60.0}));
+
+
+
+
     SimpleBlockPart simpleBlockPart_0 = 
       meshPartFactory_0.createNewBlockPart(simulation_0.get(SimulationPartManager.class));
 
@@ -102,14 +150,20 @@ public class parts_FluidRegion_BC extends StarMacro {
 
       coordinate_0.setCoordinateSystem(labCoordinateSystem_0);
 
-      coordinate_0.setCoordinate(units_0, units_0, units_0, new DoubleVector(new double[] {xo, yo, zo}));
+      coordinate_0.setCoordinate(units_0, units_0, units_0, new DoubleVector(new double[] {Double.parseDouble(userFieldFunction_0.getDefinition()), 
+                                                                                           Double.parseDouble(userFieldFunction_1.getDefinition()), 
+                                                                                           Double.parseDouble(userFieldFunction_2.getDefinition())}));
 
     Coordinate coordinate_1 = 
       simpleBlockPart_0.getCorner2();
 
       coordinate_1.setCoordinateSystem(labCoordinateSystem_0);
 
-      coordinate_1.setCoordinate(units_0, units_0, units_0, new DoubleVector(new double[] {xo+length, yo+width, zo+depth}));
+      // coordinate_1.setCoordinate(units_0, units_0, units_0, new DoubleVector(new double[] {xo+length, yo+width, zo+depth}));
+      coordinate_1.setCoordinate(units_0, units_0, units_0, new DoubleVector(new double[] {Double.parseDouble(userFieldFunction_0.getDefinition()) + Double.parseDouble(userFieldFunction_3.getDefinition()), 
+                                                                                           Double.parseDouble(userFieldFunction_1.getDefinition()) + Double.parseDouble(userFieldFunction_4.getDefinition()), 
+                                                                                           Double.parseDouble(userFieldFunction_2.getDefinition()) + Double.parseDouble(userFieldFunction_5.getDefinition())}));
+           
 
 
     simpleBlockPart_0.rebuildSimpleShapePart();

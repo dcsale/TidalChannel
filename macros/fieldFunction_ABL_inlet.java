@@ -25,6 +25,45 @@ public class fieldFunction_ABL_inlet extends StarMacro {
 
 
 
+
+
+
+      // get the user defined field functions
+      UserFieldFunction userFieldFunction_00 = 
+        ((UserFieldFunction) simulation_0.getFieldFunctionManager().getFunction("__U_x"));
+      UserFieldFunction userFieldFunction_01 = 
+        ((UserFieldFunction) simulation_0.getFieldFunctionManager().getFunction("__U_y"));
+      UserFieldFunction userFieldFunction_02 = 
+        ((UserFieldFunction) simulation_0.getFieldFunctionManager().getFunction("__U_z"));
+      UserFieldFunction userFieldFunction_03 = 
+        ((UserFieldFunction) simulation_0.getFieldFunctionManager().getFunction("__z0"));
+      UserFieldFunction userFieldFunction_04 = 
+        ((UserFieldFunction) simulation_0.getFieldFunctionManager().getFunction("__zh"));
+      UserFieldFunction userFieldFunction_05 = 
+        ((UserFieldFunction) simulation_0.getFieldFunctionManager().getFunction("__zref"));
+      UserFieldFunction userFieldFunction_06 = 
+        ((UserFieldFunction) simulation_0.getFieldFunctionManager().getFunction("__init_TI"));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     UserFieldFunction userFieldFunction_1 = 
       simulation_0.getFieldFunctionManager().createFieldFunction();
 
@@ -34,9 +73,14 @@ public class fieldFunction_ABL_inlet extends StarMacro {
 
     userFieldFunction_1.setFunctionName("WINDSPEED");
 
-    // userFieldFunction_1.setDefinition("[-10.3,0,0]");
-    // userFieldFunction_1.setDefinition("[0.9,0,0]");
-    userFieldFunction_1.setDefinition("[2.0,0,0]");
+    // userFieldFunction_1.setDefinition("[2.0,0,0]");
+    userFieldFunction_1.setDefinition("[" + userFieldFunction_00.getDefinition() + ", " + userFieldFunction_01.getDefinition() + ", " + userFieldFunction_02.getDefinition() + "]");
+    // simulation_0.println("DEBUG 0: Ux = " + userFieldFunction_00.getDefinition());
+    // simulation_0.println("DEBUG 0: Uy = " + userFieldFunction_11.getDefinition());
+    // simulation_0.println("DEBUG 0: Uz = " + userFieldFunction_22.getDefinition());
+    // userFieldFunction_1.setDefinition("[" + userFieldFunction_00.getDefinition() ", " + userFieldFunction_11.getDefinition() + ", " + userFieldFunction_22.getDefinition() + "]");
+    // userFieldFunction_1.setDefinition("[" + Double.parseDouble(userFieldFunction_00.getDefinition()) + ", " Double.parseDouble(userFieldFunction_11.getDefinition()) + ", " + Double.parseDouble(userFieldFunction_22.getDefinition()) + "]");
+    // Double.parseDouble(userFieldFunction_0.getDefinition())
 
 
 
@@ -51,8 +95,8 @@ public class fieldFunction_ABL_inlet extends StarMacro {
 
     userFieldFunction_2.setFunctionName("z0");
 
-    // userFieldFunction_2.setDefinition("0.001");
-    userFieldFunction_2.setDefinition("0.0136");
+    // userFieldFunction_2.setDefinition("0.0136");
+    userFieldFunction_2.setDefinition(userFieldFunction_03.getDefinition());
 
 
 
@@ -67,8 +111,8 @@ public class fieldFunction_ABL_inlet extends StarMacro {
 
     userFieldFunction_3.setFunctionName("zh");
 
-    userFieldFunction_3.setDefinition("60");
-    // userFieldFunction_3.setDefinition("0.8");
+    // userFieldFunction_3.setDefinition("60");
+    userFieldFunction_3.setDefinition(userFieldFunction_04.getDefinition());
     
 
 
@@ -98,8 +142,8 @@ public class fieldFunction_ABL_inlet extends StarMacro {
 
     userFieldFunction_5.setFunctionName("zref");    
 
-    userFieldFunction_5.setDefinition("[0,0,30]");
-    // userFieldFunction_5.setDefinition("[0,0,0.4]");
+    // userFieldFunction_5.setDefinition("[0,0,30]");
+    userFieldFunction_5.setDefinition("[0, 0, " + userFieldFunction_05.getDefinition() + "]");
 
     userFieldFunction_5.setDimensionsVector(new IntVector(new int[] {0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}));
 
@@ -162,6 +206,7 @@ public class fieldFunction_ABL_inlet extends StarMacro {
 
     userFieldFunction_9.setFunctionName("uref");
 
+    // userFieldFunction_9.setDefinition("$${WINDSPEED}[0]");
     userFieldFunction_9.setDefinition("$${WINDSPEED}[0]");
 
     // userFieldFunction_9.setDefinition("$${9.WINDSPEED}[0]");
@@ -251,7 +296,8 @@ public class fieldFunction_ABL_inlet extends StarMacro {
 
     userFieldFunction_14.setFunctionName("TI");
 
-    userFieldFunction_14.setDefinition("0.10");
+    // userFieldFunction_14.setDefinition("0.10");
+    userFieldFunction_14.setDefinition(userFieldFunction_06.getDefinition());
 
 
 

@@ -21,6 +21,8 @@ public class scene_Velocity extends StarMacro {
 
     simulation_0.getSceneManager().createScalarScene("Scalar Scene", "Outline", "Scalar");
 
+    
+
     Scene scene_0 = 
       simulation_0.getSceneManager().getScene("Scalar Scene 1");
 
@@ -92,6 +94,107 @@ public class scene_Velocity extends StarMacro {
     legend_0.setReverse(true);
 
     currentView_0.setInput(new DoubleVector(new double[] {447.9429667178996, 163.59095562743255, 53.02819592738737}), new DoubleVector(new double[] {447.9429667178996, -637.4809673160605, 53.02819592738737}), new DoubleVector(new double[] {0.0, 0.0, 1.0}), 209.12173559241742, 1);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    Scene scene_00 = 
+      simulation_0.getSceneManager().createScene("Copy of velocity_x");
+
+    scene_00.setPresentationName("Copy of velocity_x");
+
+    Scene scene_1 = 
+      simulation_0.getSceneManager().getScene("velocity_x");
+
+    scene_00.copyProperties(scene_1);
+
+    scene_00.initializeAndWait();
+
+    scene_00.setPresentationName("velocity_y");
+
+    ScalarDisplayer scalarDisplayer_00 = 
+      ((ScalarDisplayer) scene_00.getDisplayerManager().getDisplayer("Scalar 1"));
+
+    PrimitiveFieldFunction primitiveFieldFunction_00 = 
+      ((PrimitiveFieldFunction) simulation_0.getFieldFunctionManager().getFunction("Velocity"));
+
+    VectorComponentFieldFunction vectorComponentFieldFunction_00 = 
+      ((VectorComponentFieldFunction) primitiveFieldFunction_00.getComponentFunction(1));
+
+    scalarDisplayer_00.getScalarDisplayQuantity().setFieldFunction(vectorComponentFieldFunction_00);
+
+    PartDisplayer partDisplayer_00 = 
+      ((PartDisplayer) scene_00.getDisplayerManager().getDisplayer("Outline 1"));
+
+    partDisplayer_00.initialize();
+
+    scalarDisplayer_00.initialize();
+
+    scene_00.open(true);
+
+    scalarDisplayer_00.getScalarDisplayQuantity().setRange(new DoubleVector(new double[] {-0.12, 0.12}));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    Scene scene_2 = 
+      simulation_0.getSceneManager().createScene("Copy of velocity_x");
+
+    scene_2.setPresentationName("Copy of velocity_x");
+
+    scene_2.copyProperties(scene_1);
+
+    scene_2.initializeAndWait();
+
+    scene_2.setPresentationName("velocity_z");
+
+    ScalarDisplayer scalarDisplayer_1 = 
+      ((ScalarDisplayer) scene_2.getDisplayerManager().getDisplayer("Scalar 1"));
+
+    VectorComponentFieldFunction vectorComponentFieldFunction_1 = 
+      ((VectorComponentFieldFunction) primitiveFieldFunction_0.getComponentFunction(2));
+
+    scalarDisplayer_1.getScalarDisplayQuantity().setFieldFunction(vectorComponentFieldFunction_1);
+
+    PartDisplayer partDisplayer_1 = 
+      ((PartDisplayer) scene_2.getDisplayerManager().getDisplayer("Outline 1"));
+
+    partDisplayer_1.initialize();
+
+    scene_2.open(true);
+
+    scalarDisplayer_1.initialize();
+
+    scalarDisplayer_1.getScalarDisplayQuantity().setRange(new DoubleVector(new double[] {-0.05, 0.05}));
+
+
+
+
 
   }
 }

@@ -47,17 +47,17 @@ public class physics_SST_KOmega extends StarMacro {
  //  static final double inlet_Vz    = 0.0;     // inlet z-velocity [m/s]
 
   // Tidal Channel Case
-  static final double density             = 1025;         // fluid density [kg/m^3]
-  static final double dynamic_viscosity   = 0.00108;     // fluid dynamic viscosity [Pa-s]
-  static final double init_TI             = 0.1;         // turbulence intensity, TI = u' / U [unitless]
-  static final double init_Lturb          = 2.5;     // turbulent length scale [m]
-  static final double init_Vturb          = 0.1;         // turbulent velocity scale [m/s]
-  static final double init_Vx             = 2.0;         // initial x-velocity [m/s]    NOTE: do not start from 0 because sometime field functions may divide by 0
-  static final double init_Vy             = 0.001;       // initial y-velocity [m/s]
-  static final double init_Vz             = 0.001;       // initial z-velocity [m/s]
-  static final double inlet_Vx            = 2.0;         // inlet x-velocity [m/s]
-  static final double inlet_Vy            = 0.0;         // inlet y-velocity [m/s]
-  static final double inlet_Vz            = 0.0;         // inlet z-velocity [m/s]
+  // static final double density             = 1025;         // fluid density [kg/m^3]
+  // static final double dynamic_viscosity   = 0.00108;     // fluid dynamic viscosity [Pa-s]
+  // static final double init_TI             = 0.1;         // turbulence intensity, TI = u' / U [unitless]
+  // static final double init_Lturb          = 2.5;     // turbulent length scale [m]
+  // static final double init_Vturb          = 0.1;         // turbulent velocity scale [m/s]
+  // static final double init_Vx             = 2.0;         // initial x-velocity [m/s]    NOTE: do not start from 0 because sometime field functions may divide by 0
+  // static final double init_Vy             = 0.001;       // initial y-velocity [m/s]
+  // static final double init_Vz             = 0.001;       // initial z-velocity [m/s]
+  // static final double inlet_Vx            = 2.0;         // inlet x-velocity [m/s]
+  // static final double inlet_Vy            = 0.0;         // inlet y-velocity [m/s]
+  // static final double inlet_Vz            = 0.0;         // inlet z-velocity [m/s]
 	///////////////////////////////////////////////////////////////////////////////
 
 	
@@ -69,6 +69,23 @@ public class physics_SST_KOmega extends StarMacro {
 
 	Simulation simulation_0 = 
 	  getActiveSimulation();
+
+    // get the user inputs field functions
+    // UserFieldFunction userFieldFunction_0 = 
+    //   ((UserFieldFunction) simulation_0.getFieldFunctionManager().getFunction("__xo"));
+    // UserFieldFunction userFieldFunction_1 = 
+    //   ((UserFieldFunction) simulation_0.getFieldFunctionManager().getFunction("__yo"));
+    // UserFieldFunction userFieldFunction_2 = 
+    //   ((UserFieldFunction) simulation_0.getFieldFunctionManager().getFunction("__zo"));
+    // UserFieldFunction userFieldFunction_3 = 
+    //   ((UserFieldFunction) simulation_0.getFieldFunctionManager().getFunction("__length"));
+    // UserFieldFunction userFieldFunction_4 = 
+    //   ((UserFieldFunction) simulation_0.getFieldFunctionManager().getFunction("__width"));
+    // UserFieldFunction userFieldFunction_5 = 
+    //   ((UserFieldFunction) simulation_0.getFieldFunctionManager().getFunction("__depth"));
+
+
+
 
 	///////////////////////////////////////////////////////////////////////////////
 	// create the Physics Continuum and change any default settings 
@@ -118,7 +135,24 @@ public class physics_SST_KOmega extends StarMacro {
 
     ///////////////////////////////////////////////////////////////////////////////
 	 // Set Fluid Properties
-	//
+	// //
+ //    SingleComponentLiquidModel singleComponentLiquidModel_0 = 
+ //      physicsContinuum_0.getModelManager().getModel(SingleComponentLiquidModel.class);
+
+ //    Liquid liquid_0 = 
+ //      ((Liquid) singleComponentLiquidModel_0.getMaterial());
+
+ //    ConstantMaterialPropertyMethod constantMaterialPropertyMethod_0 = 
+ //      ((ConstantMaterialPropertyMethod) liquid_0.getMaterialProperties().getMaterialProperty(ConstantDensityProperty.class).getMethod());
+
+ //    constantMaterialPropertyMethod_0.getQuantity().setValue(density);
+
+	// ConstantMaterialPropertyMethod constantMaterialPropertyMethod_1 = 
+ //      ((ConstantMaterialPropertyMethod) liquid_0.getMaterialProperties().getMaterialProperty(DynamicViscosityProperty.class).getMethod());
+
+ //    constantMaterialPropertyMethod_1.getQuantity().setValue(dynamic_viscosity);
+
+
     SingleComponentLiquidModel singleComponentLiquidModel_0 = 
       physicsContinuum_0.getModelManager().getModel(SingleComponentLiquidModel.class);
 
@@ -128,12 +162,12 @@ public class physics_SST_KOmega extends StarMacro {
     ConstantMaterialPropertyMethod constantMaterialPropertyMethod_0 = 
       ((ConstantMaterialPropertyMethod) liquid_0.getMaterialProperties().getMaterialProperty(ConstantDensityProperty.class).getMethod());
 
-    constantMaterialPropertyMethod_0.getQuantity().setValue(density);
+    constantMaterialPropertyMethod_0.getQuantity().setDefinition("${__density}");
 
-	ConstantMaterialPropertyMethod constantMaterialPropertyMethod_1 = 
+    ConstantMaterialPropertyMethod constantMaterialPropertyMethod_1 = 
       ((ConstantMaterialPropertyMethod) liquid_0.getMaterialProperties().getMaterialProperty(DynamicViscosityProperty.class).getMethod());
 
-    constantMaterialPropertyMethod_1.getQuantity().setValue(dynamic_viscosity);
+    constantMaterialPropertyMethod_1.getQuantity().setDefinition("${__dynamic_viscosity}");
 
 
 

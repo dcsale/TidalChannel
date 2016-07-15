@@ -11,15 +11,15 @@ import star.vis.*;
 public class scene_VerticalProfilesABL extends StarMacro {
 
   // NOTE: it would be better to define these as field functions so do not have to duplicate User Inputs over multiple files
-  static final double xo          = 0;       // origin x coordinate [m]
-  static final double yo          = 0;       // origin y coordinate [m]
-  static final double zo          = 0;       // origin z coordinate [m]
-  // static final double length      = 12.3;     // length in x-dimention (steamwise) [m]
-  // static final double width       = 1.0;     // length in y-dimention (crossflow) [m]
-  // static final double depth       = 0.8;      // length in z-dimention (vertical) [m]
-  static final double length      = 1000;     // length in x-dimention (steamwise) [m]
-  static final double width       = 400;     // length in y-dimention (crossflow) [m]
-  static final double depth       = 60;      // length in z-dimention (vertical) [m]
+  // static final double xo          = 0;       // origin x coordinate [m]
+  // static final double yo          = 0;       // origin y coordinate [m]
+  // static final double zo          = 0;       // origin z coordinate [m]
+  // // static final double length      = 12.3;     // length in x-dimention (steamwise) [m]
+  // // static final double width       = 1.0;     // length in y-dimention (crossflow) [m]
+  // // static final double depth       = 0.8;      // length in z-dimention (vertical) [m]
+  // static final double length      = 1000;     // length in x-dimention (steamwise) [m]
+  // static final double width       = 400;     // length in y-dimention (crossflow) [m]
+  // static final double depth       = 60;      // length in z-dimention (vertical) [m]
 
   public void execute() {
     execute0();
@@ -38,8 +38,19 @@ public class scene_VerticalProfilesABL extends StarMacro {
 
     // scene_0.setTransparencyOverrideMode(1);
 
-
-
+      // // get the user defined field functions
+      // UserFieldFunction userFieldFunction_0 = 
+      //   ((UserFieldFunction) simulation_0.getFieldFunctionManager().getFunction("__xo"));
+      // UserFieldFunction userFieldFunction_1 = 
+      //   ((UserFieldFunction) simulation_0.getFieldFunctionManager().getFunction("__yo"));
+      // UserFieldFunction userFieldFunction_2 = 
+      //   ((UserFieldFunction) simulation_0.getFieldFunctionManager().getFunction("__zo"));
+      // UserFieldFunction userFieldFunction_3 = 
+      //   ((UserFieldFunction) simulation_0.getFieldFunctionManager().getFunction("__length"));
+      // UserFieldFunction userFieldFunction_4 = 
+      //   ((UserFieldFunction) simulation_0.getFieldFunctionManager().getFunction("__width"));
+      // UserFieldFunction userFieldFunction_5 = 
+      //   ((UserFieldFunction) simulation_0.getFieldFunctionManager().getFunction("__depth"));
 
 
 

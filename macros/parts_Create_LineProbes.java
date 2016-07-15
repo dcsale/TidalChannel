@@ -18,15 +18,15 @@ import star.vis.*;
 public class parts_Create_LineProbes extends StarMacro {
 
   // NOTE: it would be better to define these as field functions so do not have to duplicate User Inputs over multiple files
-  static final double xo          = 0;       // origin x coordinate [m]
-  static final double yo          = 0;       // origin y coordinate [m]
-  static final double zo          = 0;       // origin z coordinate [m]
-  // static final double length      = 12.3;     // length in x-dimention (steamwise) [m]
-  // static final double width       = 1.0;     // length in y-dimention (crossflow) [m]
-  // static final double depth       = 0.8;      // length in z-dimention (vertical) [m]
-  static final double length      = 1000;     // length in x-dimention (steamwise) [m]
-  static final double width       = 400;     // length in y-dimention (crossflow) [m]
-  static final double depth       = 60;      // length in z-dimention (vertical) [m]
+  // static final double xo          = 0;       // origin x coordinate [m]
+  // static final double yo          = 0;       // origin y coordinate [m]
+  // static final double zo          = 0;       // origin z coordinate [m]
+  // // static final double length      = 12.3;     // length in x-dimention (steamwise) [m]
+  // // static final double width       = 1.0;     // length in y-dimention (crossflow) [m]
+  // // static final double depth       = 0.8;      // length in z-dimention (vertical) [m]
+  // static final double length      = 1000;     // length in x-dimention (steamwise) [m]
+  // static final double width       = 400;     // length in y-dimention (crossflow) [m]
+  // static final double depth       = 60;      // length in z-dimention (vertical) [m]
 
   ///////////////////////////////////////////////////////////////////////////////
     // USER INPUTS
@@ -61,8 +61,6 @@ public class parts_Create_LineProbes extends StarMacro {
 
       
 
-    // now read the updated coordinate file (written by "mooring model" code) and update probe coordinates
-    // now read the updated coordinate file (written by "mooring model" code) and update probe coordinates
         File f = new File(path1);
         try {
 
@@ -157,6 +155,33 @@ public class parts_Create_LineProbes extends StarMacro {
 
 
 
+      // get the user inputs field functions
+      UserFieldFunction userFieldFunction_0 = 
+        ((UserFieldFunction) simulation_0.getFieldFunctionManager().getFunction("__xo"));
+      UserFieldFunction userFieldFunction_1 = 
+        ((UserFieldFunction) simulation_0.getFieldFunctionManager().getFunction("__yo"));
+      UserFieldFunction userFieldFunction_2 = 
+        ((UserFieldFunction) simulation_0.getFieldFunctionManager().getFunction("__zo"));
+      UserFieldFunction userFieldFunction_3 = 
+        ((UserFieldFunction) simulation_0.getFieldFunctionManager().getFunction("__length"));
+      UserFieldFunction userFieldFunction_4 = 
+        ((UserFieldFunction) simulation_0.getFieldFunctionManager().getFunction("__width"));
+      UserFieldFunction userFieldFunction_5 = 
+        ((UserFieldFunction) simulation_0.getFieldFunctionManager().getFunction("__depth"));
+
+
+
+
+      // double xx   = Double.parseDouble(userFieldFunction_0.getDefinition())+(Double.parseDouble(userFieldFunction_3.getDefinition())-Double.parseDouble(userFieldFunction_0.getDefinition()))/2;
+      // Double.parseDouble(userFieldFunction_0.getDefinition())
+      double yy1   = (Double.parseDouble(userFieldFunction_4.getDefinition())-Double.parseDouble(userFieldFunction_1.getDefinition()))/2;
+      double yy2   = Double.parseDouble(userFieldFunction_1.getDefinition()) + (Double.parseDouble(userFieldFunction_4.getDefinition())-Double.parseDouble(userFieldFunction_1.getDefinition()))/2;
+      double zz1   = (Double.parseDouble(userFieldFunction_5.getDefinition())-Double.parseDouble(userFieldFunction_2.getDefinition()))/2;
+      double zz2   = Double.parseDouble(userFieldFunction_2.getDefinition()) + (Double.parseDouble(userFieldFunction_5.getDefinition())-Double.parseDouble(userFieldFunction_2.getDefinition()))/2;
+
+
+
+
 
 
 
@@ -175,9 +200,11 @@ public class parts_Create_LineProbes extends StarMacro {
 
     coordinate_0.setCoordinateSystem(labCoordinateSystem_0);
 
-    coordinate_0.setValue(new DoubleVector(new double[] {xo, (width-yo)/2, (depth-zo)/2}));
+    // coordinate_0.setValue(new DoubleVector(new double[] {xo, (width-yo)/2, (depth-zo)/2}));
+    coordinate_0.setValue(new DoubleVector(new double[] {Double.parseDouble(userFieldFunction_0.getDefinition()), yy1, zz1}));
 
-    coordinate_0.setCoordinate(units_2, units_2, units_2, new DoubleVector(new double[] {xo, yo + (width-yo)/2, zo + (depth-zo)/2}));
+    // coordinate_0.setCoordinate(units_2, units_2, units_2, new DoubleVector(new double[] {xo, yo + (width-yo)/2, zo + (depth-zo)/2}));
+    coordinate_0.setCoordinate(units_2, units_2, units_2, new DoubleVector(new double[] {Double.parseDouble(userFieldFunction_0.getDefinition()), yy2, zz2}));
 
 
     Coordinate coordinate_1 = 
@@ -185,9 +212,11 @@ public class parts_Create_LineProbes extends StarMacro {
 
     coordinate_1.setCoordinateSystem(labCoordinateSystem_0);
 
-    coordinate_1.setValue(new DoubleVector(new double[] {length, (width-yo)/2, (depth-zo)/2}));
+    // coordinate_1.setValue(new DoubleVector(new double[] {length, (width-yo)/2, (depth-zo)/2}));
+    coordinate_1.setValue(new DoubleVector(new double[] {Double.parseDouble(userFieldFunction_3.getDefinition()), yy1, zz1}));
 
-    coordinate_1.setCoordinate(units_2, units_2, units_2, new DoubleVector(new double[] {length, yo + (width-yo)/2, zo + (depth-zo)/2}));
+    // coordinate_1.setCoordinate(units_2, units_2, units_2, new DoubleVector(new double[] {length, yo + (width-yo)/2, zo + (depth-zo)/2}));
+    coordinate_1.setCoordinate(units_2, units_2, units_2, new DoubleVector(new double[] {Double.parseDouble(userFieldFunction_3.getDefinition()), yy2, zz2}));
 
     linePart_00.setCoordinateSystem(labCoordinateSystem_0);
 
@@ -212,18 +241,22 @@ public class parts_Create_LineProbes extends StarMacro {
 
     coordinate_2.setCoordinateSystem(labCoordinateSystem_0);
 
-    coordinate_2.setValue(new DoubleVector(new double[] {xo, yo+(width-yo)/2, 0.0}));
+    // coordinate_2.setValue(new DoubleVector(new double[] {xo, yo+(width-yo)/2, 0.0}));
+    coordinate_2.setValue(new DoubleVector(new double[] {Double.parseDouble(userFieldFunction_0.getDefinition()), yy2, Double.parseDouble(userFieldFunction_2.getDefinition())}));
 
-    coordinate_2.setCoordinate(units_2, units_2, units_2, new DoubleVector(new double[] {xo, yo+(width-yo)/2, 0.0}));
+    // coordinate_2.setCoordinate(units_2, units_2, units_2, new DoubleVector(new double[] {xo, yo+(width-yo)/2, 0.0}));
+    coordinate_2.setCoordinate(units_2, units_2, units_2, new DoubleVector(new double[] {Double.parseDouble(userFieldFunction_0.getDefinition()), yy2, Double.parseDouble(userFieldFunction_2.getDefinition())}));
 
     Coordinate coordinate_3 = 
       linePart_1.getPoint2Coordinate();
 
     coordinate_3.setCoordinateSystem(labCoordinateSystem_0);
 
-    coordinate_3.setValue(new DoubleVector(new double[] {xo, yo+(width-yo)/2, depth}));
+    // coordinate_3.setValue(new DoubleVector(new double[] {xo, yo+(width-yo)/2, depth}));
+    coordinate_3.setValue(new DoubleVector(new double[] {Double.parseDouble(userFieldFunction_0.getDefinition()), yy2, Double.parseDouble(userFieldFunction_5.getDefinition())}));
 
-    coordinate_3.setCoordinate(units_2, units_2, units_2, new DoubleVector(new double[] {xo, yo+(width-yo)/2, depth}));
+    // coordinate_3.setCoordinate(units_2, units_2, units_2, new DoubleVector(new double[] {xo, yo+(width-yo)/2, depth}));
+    coordinate_3.setCoordinate(units_2, units_2, units_2, new DoubleVector(new double[] {Double.parseDouble(userFieldFunction_0.getDefinition()), yy2, Double.parseDouble(userFieldFunction_5.getDefinition())}));
 
     linePart_1.setCoordinateSystem(labCoordinateSystem_0);
 

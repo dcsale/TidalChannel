@@ -10,15 +10,15 @@ import star.vis.*;
 
 public class parts_SectionPlanes extends StarMacro {
 
-  static final double xo          = 0;       // origin x coordinate [m]
-  static final double yo          = 0;       // origin y coordinate [m]
-  static final double zo          = 0;       // origin z coordinate [m]
-  // static final double length            = 12.3;     // length in x-dimention (steamwise) [m]
-  // static final double width           = 1.0;       // length in y-dimention (crossflow) [m]
-  // static final double depth           = 0.8;          // length in z-dimention (vertical) [m]
-  static final double length      = 1000;     // length in x-dimention (steamwise) [m]
-  static final double width       = 400;     // length in y-dimention (crossflow) [m]
-  static final double depth       = 60;      // length in z-dimention (vertical) [m]
+  // static final double xo          = 0;       // origin x coordinate [m]
+  // static final double yo          = 0;       // origin y coordinate [m]
+  // static final double zo          = 0;       // origin z coordinate [m]
+  // // static final double length            = 12.3;     // length in x-dimention (steamwise) [m]
+  // // static final double width           = 1.0;       // length in y-dimention (crossflow) [m]
+  // // static final double depth           = 0.8;          // length in z-dimention (vertical) [m]
+  // static final double length      = 1000;     // length in x-dimention (steamwise) [m]
+  // static final double width       = 400;     // length in y-dimention (crossflow) [m]
+  // static final double depth       = 60;      // length in z-dimention (vertical) [m]
 
 
   public void execute() {
@@ -41,6 +41,39 @@ public class parts_SectionPlanes extends StarMacro {
 
 
 
+      // get the user inputs field functions
+      UserFieldFunction userFieldFunction_0 = 
+      ((UserFieldFunction) simulation_0.getFieldFunctionManager().getFunction("__xo"));
+      UserFieldFunction userFieldFunction_1 = 
+      ((UserFieldFunction) simulation_0.getFieldFunctionManager().getFunction("__yo"));
+      UserFieldFunction userFieldFunction_2 = 
+      ((UserFieldFunction) simulation_0.getFieldFunctionManager().getFunction("__zo"));
+      UserFieldFunction userFieldFunction_3 = 
+      ((UserFieldFunction) simulation_0.getFieldFunctionManager().getFunction("__length"));
+      UserFieldFunction userFieldFunction_4 = 
+      ((UserFieldFunction) simulation_0.getFieldFunctionManager().getFunction("__width"));
+      UserFieldFunction userFieldFunction_5 = 
+      ((UserFieldFunction) simulation_0.getFieldFunctionManager().getFunction("__depth"));
+
+
+
+
+      double xx   = Double.parseDouble(userFieldFunction_0.getDefinition())+(Double.parseDouble(userFieldFunction_3.getDefinition())-Double.parseDouble(userFieldFunction_0.getDefinition()))/2;
+      double yy   = Double.parseDouble(userFieldFunction_1.getDefinition())+(Double.parseDouble(userFieldFunction_4.getDefinition())-Double.parseDouble(userFieldFunction_1.getDefinition()))/2;
+      double zz   = Double.parseDouble(userFieldFunction_2.getDefinition())+(Double.parseDouble(userFieldFunction_5.getDefinition())-Double.parseDouble(userFieldFunction_2.getDefinition()))/2;
+      simulation_0.println("DEBUG 0: xx = " + xx);
+      simulation_0.println("DEBUG 0: yy = " + yy);
+      simulation_0.println("DEBUG 0: zz = " + zz);
+      // simulation_0.println("DEBUG 0: xo = " + Double.parseDouble(userFieldFunction_0.getDefinition()));
+      // Double.parseDouble(userFieldFunction_0.getDefinition())
+      // xo+(length-xo)/2
+      // yo+(width-yo)/2
+      // zo+(depth-zo)/2
+
+
+
+
+
 
 
     PlaneSection planeSection_3 = 
@@ -56,9 +89,12 @@ public class parts_SectionPlanes extends StarMacro {
     Coordinate coordinate_6 = 
       planeSection_3.getOriginCoordinate();
 
-    coordinate_6.setValue(new DoubleVector(new double[] {xo+(length-xo)/2, yo+(width-yo)/2, zo+(depth-zo)/2}));
+    // Double.parseDouble(userFieldFunction_0.getDefinition())
+    // coordinate_6.setValue(new DoubleVector(new double[] {xo+(length-xo)/2, yo+(width-yo)/2, zo+(depth-zo)/2}));
+    coordinate_6.setValue(new DoubleVector(new double[] {xx,yy,zz}));
 
-    coordinate_6.setCoordinate(units_0, units_0, units_0, new DoubleVector(new double[] {xo+(length-xo)/2, yo+(width-yo)/2, zo+(depth-zo)/2}));
+    // coordinate_6.setCoordinate(units_0, units_0, units_0, new DoubleVector(new double[] {xo+(length-xo)/2, yo+(width-yo)/2, zo+(depth-zo)/2}));
+    coordinate_6.setCoordinate(units_0, units_0, units_0, new DoubleVector(new double[] {xx,yy,zz}));
 
     coordinate_6.setCoordinateSystem(labCoordinateSystem_0);
 
@@ -138,9 +174,11 @@ public class parts_SectionPlanes extends StarMacro {
     Coordinate coordinate_8 = 
       planeSection_4.getOriginCoordinate();
 
-    coordinate_8.setValue(new DoubleVector(new double[] {xo+(length-xo)/2, yo+(width-yo)/2, zo+(depth-zo)/2}));
+    // coordinate_8.setValue(new DoubleVector(new double[] {xo+(length-xo)/2, yo+(width-yo)/2, zo+(depth-zo)/2}));
+    coordinate_8.setValue(new DoubleVector(new double[] {xx,yy,zz}));
 
-    coordinate_8.setCoordinate(units_0, units_0, units_0, new DoubleVector(new double[] {xo+(length-xo)/2, yo+(width-yo)/2, zo+(depth-zo)/2}));
+    // coordinate_8.setCoordinate(units_0, units_0, units_0, new DoubleVector(new double[] {xo+(length-xo)/2, yo+(width-yo)/2, zo+(depth-zo)/2}));
+    coordinate_8.setCoordinate(units_0, units_0, units_0, new DoubleVector(new double[] {xx,yy,zz}));
 
     coordinate_8.setCoordinateSystem(labCoordinateSystem_0);
 
@@ -223,9 +261,11 @@ public class parts_SectionPlanes extends StarMacro {
     Coordinate coordinate_10 = 
       planeSection_5.getOriginCoordinate();
 
-    coordinate_10.setValue(new DoubleVector(new double[] {xo+(length-xo)/2, yo+(width-yo)/2, zo+(depth-zo)/2}));
+    // coordinate_10.setValue(new DoubleVector(new double[] {xo+(length-xo)/2, yo+(width-yo)/2, zo+(depth-zo)/2}));
+    coordinate_10.setValue(new DoubleVector(new double[] {xx,yy,zz}));
 
-    coordinate_10.setCoordinate(units_0, units_0, units_0, new DoubleVector(new double[] {xo+(length-xo)/2, yo+(width-yo)/2, zo+(depth-zo)/2}));
+    // coordinate_10.setCoordinate(units_0, units_0, units_0, new DoubleVector(new double[] {xo+(length-xo)/2, yo+(width-yo)/2, zo+(depth-zo)/2}));
+    coordinate_10.setCoordinate(units_0, units_0, units_0, new DoubleVector(new double[] {xx,yy,zz}));
 
     coordinate_10.setCoordinateSystem(labCoordinateSystem_0);
 
