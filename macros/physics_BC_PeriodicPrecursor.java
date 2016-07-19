@@ -13,7 +13,7 @@ import star.flow.*;
 public class physics_BC_PeriodicPrecursor extends StarMacro {
 
  
-  int  nPrecursors = 3;   // number of times to repeat the pre-cursor simulation
+  // int  nPrecursors = 3;   // number of times to repeat the pre-cursor simulation
 
   public void execute() {
     execute0();
@@ -223,7 +223,15 @@ public class physics_BC_PeriodicPrecursor extends StarMacro {
     simulation_0.getSimulationIterator().run();
 
 
-    for (int i = 0; i < nPrecursors; i++) {
+
+
+
+
+    UserFieldFunction userFieldFunction_0 = 
+            ((UserFieldFunction) simulation_0.getFieldFunctionManager().getFunction("__nPrecursors"));
+
+            
+    for (int i = 0; i < Integer.parseInt(userFieldFunction_0.getDefinition()); i++) {
       // new StarScript(getActiveSimulation(), new java.io.File(resolvePath("physics_BC_PeriodicPrecursor_RunAgain.java"))).play();
 
       // XyzInternalTable xyzInternalTable_0 = 

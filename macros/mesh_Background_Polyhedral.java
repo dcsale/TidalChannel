@@ -69,15 +69,15 @@
 
 //     genericAbsoluteSize_1.getValue().setValue(2.0);
 
-//     PartsMinimumSurfaceSize partsMinimumSurfaceSize_0 = 
-//       autoMeshOperation_4.getDefaultValues().get(PartsMinimumSurfaceSize.class);
+    // PartsMinimumSurfaceSize partsMinimumSurfaceSize_0 = 
+    //   autoMeshOperation_4.getDefaultValues().get(PartsMinimumSurfaceSize.class);
 
-//     partsMinimumSurfaceSize_0.getRelativeOrAbsoluteOption().setSelected(RelativeOrAbsoluteOption.Type.ABSOLUTE);
+    // partsMinimumSurfaceSize_0.getRelativeOrAbsoluteOption().setSelected(RelativeOrAbsoluteOption.Type.ABSOLUTE);
 
-//     GenericAbsoluteSize genericAbsoluteSize_2 = 
-//       ((GenericAbsoluteSize) partsMinimumSurfaceSize_0.getAbsoluteSize());
+    // GenericAbsoluteSize genericAbsoluteSize_2 = 
+    //   ((GenericAbsoluteSize) partsMinimumSurfaceSize_0.getAbsoluteSize());
 
-//     genericAbsoluteSize_2.getValue().setValue(0.5);
+    // genericAbsoluteSize_2.getValue().setValue(0.5);
 
 //     SurfaceGrowthRate surfaceGrowthRate_0 = 
 //       autoMeshOperation_4.getDefaultValues().get(SurfaceGrowthRate.class);
@@ -245,8 +245,49 @@ public class mesh_Background_Polyhedral extends StarMacro {
 
   private void execute0() {
 
-    Simulation simulation_0 = 
-      getActiveSimulation();
+        Simulation simulation_0 = 
+              getActiveSimulation();
+
+
+
+
+
+
+
+
+
+    // get the user inputs field functions
+      UserFieldFunction userFieldFunction_0 = 
+        ((UserFieldFunction) simulation_0.getFieldFunctionManager().getFunction("__mesh_BaseSize"));
+      UserFieldFunction userFieldFunction_1 = 
+        ((UserFieldFunction) simulation_0.getFieldFunctionManager().getFunction("__mesh_SurfaceSizeTarget"));
+      UserFieldFunction userFieldFunction_2 = 
+        ((UserFieldFunction) simulation_0.getFieldFunctionManager().getFunction("__mesh_SurfaceSizeMinimum"));
+      UserFieldFunction userFieldFunction_3 = 
+        ((UserFieldFunction) simulation_0.getFieldFunctionManager().getFunction("__mesh_Seabed_SurfaceSizeTarget"));
+      
+      UserFieldFunction userFieldFunction_4 = 
+        ((UserFieldFunction) simulation_0.getFieldFunctionManager().getFunction("__mesh_PrismLayers"));
+      UserFieldFunction userFieldFunction_5 = 
+        ((UserFieldFunction) simulation_0.getFieldFunctionManager().getFunction("__mesh_PrismWallThickness"));
+      UserFieldFunction userFieldFunction_6 = 
+        ((UserFieldFunction) simulation_0.getFieldFunctionManager().getFunction("__mesh_PrismLayerThickness"));
+
+      UserFieldFunction userFieldFunction_7 = 
+        ((UserFieldFunction) simulation_0.getFieldFunctionManager().getFunction("__mesh_SurfaceGrowthRate"));
+      UserFieldFunction userFieldFunction_8 = 
+        ((UserFieldFunction) simulation_0.getFieldFunctionManager().getFunction("__mesh_VolGrowthRate"));
+      UserFieldFunction userFieldFunction_9 = 
+        ((UserFieldFunction) simulation_0.getFieldFunctionManager().getFunction("__mesh_VolumeDensity"));
+      UserFieldFunction userFieldFunction_10 = 
+        ((UserFieldFunction) simulation_0.getFieldFunctionManager().getFunction("__mesh_GrowthFactor"));
+      
+
+
+
+
+
+    
 
     SimpleBlockPart simpleBlockPart_0 = 
       ((SimpleBlockPart) simulation_0.get(SimulationPartManager.class).getPart("Block"));
@@ -268,18 +309,16 @@ public class mesh_Background_Polyhedral extends StarMacro {
     ResurfacerAutoMesher resurfacerAutoMesher_0 = 
       ((ResurfacerAutoMesher) autoMeshOperation_0.getMeshers().getObject("Surface Remesher"));
 
-    resurfacerAutoMesher_0.setDoCurvatureRefinement(false);
 
+    // resurfacerAutoMesher_0.setDoCurvatureRefinement(false);
     resurfacerAutoMesher_0.setDoCurvatureRefinement(true);
 
-    resurfacerAutoMesher_0.setDoProximityRefinement(false);
-
+    // resurfacerAutoMesher_0.setDoProximityRefinement(false);
     resurfacerAutoMesher_0.setDoProximityRefinement(true);
 
     resurfacerAutoMesher_0.setDoCompatibilityRefinement(true);
 
-    resurfacerAutoMesher_0.setDoAlignedMeshing(false);
-
+    // resurfacerAutoMesher_0.setDoAlignedMeshing(false);
     resurfacerAutoMesher_0.setDoAlignedMeshing(true);
 
     resurfacerAutoMesher_0.setMinimumFaceQuality(0.051);
@@ -300,11 +339,11 @@ public class mesh_Background_Polyhedral extends StarMacro {
     PrismAutoMesher prismAutoMesher_0 = 
       ((PrismAutoMesher) autoMeshOperation_0.getMeshers().getObject("Prism Layer Mesher"));
 
-    prismAutoMesher_0.getPrismStretchingFunction().setSelected(PrismStretchingFunction.Type.GEOMETRIC_PROGRESSION);
+    // prismAutoMesher_0.getPrismStretchingFunction().setSelected(PrismStretchingFunction.Type.GEOMETRIC_PROGRESSION);
 
-    prismAutoMesher_0.getPrismStretchingFunction().setSelected(PrismStretchingFunction.Type.HYPERBOLIC_TANGENT);
+    // prismAutoMesher_0.getPrismStretchingFunction().setSelected(PrismStretchingFunction.Type.HYPERBOLIC_TANGENT);
 
-    prismAutoMesher_0.getPrismStretchingOption().setSelected(PrismStretchingOption.Type.STRETCHING);
+    // prismAutoMesher_0.getPrismStretchingOption().setSelected(PrismStretchingOption.Type.STRETCHING);
 
     prismAutoMesher_0.getPrismStretchingOption().setSelected(PrismStretchingOption.Type.WALL_THICKNESS);
 
@@ -326,34 +365,117 @@ public class mesh_Background_Polyhedral extends StarMacro {
 
     prismAutoMesher_0.setNearCoreLayerAspectRatio(1.1);
 
-    autoMeshOperation_0.getDefaultValues().get(BaseSize.class).setValue(5.1);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // autoMeshOperation_0.getDefaultValues().get(BaseSize.class).setValue(5.1);
+    autoMeshOperation_0.getDefaultValues().get(BaseSize.class).setValue(  Double.parseDouble(userFieldFunction_0.getDefinition()) );
+    
+
+
 
     ProjectToCadOption projectToCadOption_0 = 
       autoMeshOperation_0.getDefaultValues().get(ProjectToCadOption.class);
 
-    projectToCadOption_0.setProjectToCad(false);
-
+    // projectToCadOption_0.setProjectToCad(false);
     projectToCadOption_0.setProjectToCad(true);
+
+
 
     PartsTargetSurfaceSize partsTargetSurfaceSize_0 = 
       autoMeshOperation_0.getDefaultValues().get(PartsTargetSurfaceSize.class);
 
-    partsTargetSurfaceSize_0.getRelativeOrAbsoluteOption().setSelected(RelativeOrAbsoluteOption.Type.ABSOLUTE);
+            // partsTargetSurfaceSize_0.getRelativeOrAbsoluteOption().setSelected(RelativeOrAbsoluteOption.Type.RELATIVE);
 
-    partsTargetSurfaceSize_0.getRelativeOrAbsoluteOption().setSelected(RelativeOrAbsoluteOption.Type.RELATIVE);
+            // GenericRelativeSize genericRelativeSize_0 = 
+            //   ((GenericRelativeSize) partsTargetSurfaceSize_0.getRelativeSize());
 
-    GenericRelativeSize genericRelativeSize_0 = 
-      ((GenericRelativeSize) partsTargetSurfaceSize_0.getRelativeSize());
+            // genericRelativeSize_0.setPercentage(99.9);
 
-    genericRelativeSize_0.setPercentage(99.9);
+        partsTargetSurfaceSize_0.getRelativeOrAbsoluteOption().setSelected(RelativeOrAbsoluteOption.Type.ABSOLUTE);
+
+        GenericAbsoluteSize genericAbsoluteSize_00 = 
+          ((GenericAbsoluteSize) partsTargetSurfaceSize_0.getAbsoluteSize());
+
+        genericAbsoluteSize_00.getValue().setValue(Double.parseDouble(userFieldFunction_1.getDefinition()));
+
+
+
+
+
+
+
+    // PartsMinimumSurfaceSize partsMinimumSurfaceSize_0 = 
+    //   autoMeshOperation_0.getDefaultValues().get(PartsMinimumSurfaceSize.class);
+
+    // GenericAbsoluteSize genericAbsoluteSize_0 = 
+    //   ((GenericAbsoluteSize) partsMinimumSurfaceSize_0.getAbsoluteSize());
+
+    // // genericAbsoluteSize_0.getValue().setValue(1.1);
+    // genericAbsoluteSize_0.getValue().setValue(Double.parseDouble(userFieldFunction_2.getDefinition()));
+
+
+
 
     PartsMinimumSurfaceSize partsMinimumSurfaceSize_0 = 
       autoMeshOperation_0.getDefaultValues().get(PartsMinimumSurfaceSize.class);
 
+    partsMinimumSurfaceSize_0.getRelativeOrAbsoluteOption().setSelected(RelativeOrAbsoluteOption.Type.ABSOLUTE);
+
     GenericAbsoluteSize genericAbsoluteSize_0 = 
       ((GenericAbsoluteSize) partsMinimumSurfaceSize_0.getAbsoluteSize());
 
-    genericAbsoluteSize_0.getValue().setValue(1.1);
+    genericAbsoluteSize_0.getValue().setValue(Double.parseDouble(userFieldFunction_2.getDefinition()));
+
+
+
+
+
 
     SurfaceCurvature surfaceCurvature_0 = 
       autoMeshOperation_0.getDefaultValues().get(SurfaceCurvature.class);
@@ -362,8 +484,9 @@ public class mesh_Background_Polyhedral extends StarMacro {
       surfaceCurvature_0.getSurfaceCurvatureNumPts();
 
     surfaceCurvatureNumPts_0.setNumPointsAroundCircle(24.0);
+    // surfaceCurvatureNumPts_0.setNumPointsAroundCircle(37.0);
 
-    surfaceCurvatureNumPts_0.setNumPointsAroundCircle(37.0);
+
 
     SurfaceProximity surfaceProximity_0 = 
       autoMeshOperation_0.getDefaultValues().get(SurfaceProximity.class);
@@ -372,25 +495,41 @@ public class mesh_Background_Polyhedral extends StarMacro {
 
     surfaceProximity_0.setNumPointsInGap(2.00001);
 
-    surfaceProximity_0.setEnableCeiling(true);
-
+    // surfaceProximity_0.setEnableCeiling(true);
     surfaceProximity_0.setEnableCeiling(false);
 
-    surfaceProximity_0.setEnableCeiling(true);
 
-    surfaceProximity_0.setEnableCeiling(false);
+
+
+
 
     SurfaceGrowthRate surfaceGrowthRate_0 = 
       autoMeshOperation_0.getDefaultValues().get(SurfaceGrowthRate.class);
 
-    surfaceGrowthRate_0.setGrowthRate(1.21);
+    // surfaceGrowthRate_0.setGrowthRate(1.21);
+    surfaceGrowthRate_0.setGrowthRate(Double.parseDouble(userFieldFunction_7.getDefinition()));
+    
+
+
+
+
+
+
 
     NumPrismLayers numPrismLayers_0 = 
       autoMeshOperation_0.getDefaultValues().get(NumPrismLayers.class);
 
-    numPrismLayers_0.setNumLayers(13);
+    // numPrismLayers_0.setNumLayers(13);
+      numPrismLayers_0.setNumLayers(  Integer.parseInt(userFieldFunction_4.getDefinition()) );
 
-    autoMeshOperation_0.getDefaultValues().get(PrismWallThickness.class).setValue(0.0138);
+
+
+
+
+
+    // autoMeshOperation_0.getDefaultValues().get(PrismWallThickness.class).setValue(0.0138);
+    autoMeshOperation_0.getDefaultValues().get(PrismWallThickness.class).setValue(Double.parseDouble(userFieldFunction_5.getDefinition()));
+
 
     PrismThickness prismThickness_0 = 
       autoMeshOperation_0.getDefaultValues().get(PrismThickness.class);
@@ -398,12 +537,21 @@ public class mesh_Background_Polyhedral extends StarMacro {
     GenericAbsoluteSize genericAbsoluteSize_1 = 
       ((GenericAbsoluteSize) prismThickness_0.getAbsoluteSize());
 
-    genericAbsoluteSize_1.getValue().setValue(3.01);
+    // genericAbsoluteSize_1.getValue().setValue(3.01);
+      genericAbsoluteSize_1.getValue().setValue(Double.parseDouble(userFieldFunction_6.getDefinition()));
+
+
+
 
     PartsTetPolyGrowthRate partsTetPolyGrowthRate_0 = 
       autoMeshOperation_0.getDefaultValues().get(PartsTetPolyGrowthRate.class);
 
-    partsTetPolyGrowthRate_0.setGrowthRate(1.11);
+    // partsTetPolyGrowthRate_0.setGrowthRate(1.11);
+    partsTetPolyGrowthRate_0.setGrowthRate(Double.parseDouble(userFieldFunction_8.getDefinition()));
+
+
+
+
 
     MaximumCellSize maximumCellSize_0 = 
       autoMeshOperation_0.getDefaultValues().get(MaximumCellSize.class);
@@ -413,12 +561,21 @@ public class mesh_Background_Polyhedral extends StarMacro {
 
     genericRelativeSize_1.setPercentage(1000.0);
 
+
+
+
+
+
     PartsTetPolyDensity partsTetPolyDensity_0 = 
       autoMeshOperation_0.getDefaultValues().get(PartsTetPolyDensity.class);
 
-    partsTetPolyDensity_0.setVolumeMeshDensity(1.01);
+    // partsTetPolyDensity_0.setVolumeMeshDensity(1.01);
+    partsTetPolyDensity_0.setVolumeMeshDensity(Double.parseDouble(userFieldFunction_9.getDefinition()));
 
-    partsTetPolyDensity_0.setGrowthFactor(1.01);
+
+    // partsTetPolyDensity_0.setGrowthFactor(1.01);
+    partsTetPolyDensity_0.setGrowthFactor(Double.parseDouble(userFieldFunction_10.getDefinition()));
+
 
 
 
@@ -562,19 +719,26 @@ public class mesh_Background_Polyhedral extends StarMacro {
     GenericAbsoluteSize genericAbsoluteSize_4 = 
       ((GenericAbsoluteSize) partsTargetSurfaceSize_2.getAbsoluteSize());
 
-    genericAbsoluteSize_4.getValue().setValue(2.01);
+    // genericAbsoluteSize_4.getValue().setValue(2.01);
+      genericAbsoluteSize_4.getValue().setValue(Double.parseDouble(userFieldFunction_3.getDefinition()));
+
+
 
     NumPrismLayers numPrismLayers_2 = 
       surfaceCustomMeshControl_5.getCustomValues().get(CustomPrismValuesManager.class).get(NumPrismLayers.class);
 
-    numPrismLayers_2.setNumLayers(15);
+    // numPrismLayers_2.setNumLayers(15);
+      numPrismLayers_2.setNumLayers(Integer.parseInt(userFieldFunction_4.getDefinition()));
+    
 
     PartsOverrideBoundaryDefault partsOverrideBoundaryDefault_1 = 
       surfaceCustomMeshControl_5.getCustomValues().get(CustomPrismValuesManager.class).get(PartsOverrideBoundaryDefault.class);
 
     partsOverrideBoundaryDefault_1.setOverride(true);
 
-    surfaceCustomMeshControl_5.getCustomValues().get(CustomPrismValuesManager.class).get(PrismWallThickness.class).setValue(0.0138);
+    // surfaceCustomMeshControl_5.getCustomValues().get(CustomPrismValuesManager.class).get(PrismWallThickness.class).setValue(0.0138);
+    surfaceCustomMeshControl_5.getCustomValues().get(CustomPrismValuesManager.class).get(PrismWallThickness.class).setValue(Double.parseDouble(userFieldFunction_5.getDefinition()));
+
 
     PrismThickness prismThickness_2 = 
       surfaceCustomMeshControl_5.getCustomValues().get(CustomPrismValuesManager.class).get(PrismThickness.class);
@@ -584,7 +748,8 @@ public class mesh_Background_Polyhedral extends StarMacro {
     GenericAbsoluteSize genericAbsoluteSize_5 = 
       ((GenericAbsoluteSize) prismThickness_2.getAbsoluteSize());
 
-    genericAbsoluteSize_5.getValue().setValue(1.51);
+    // genericAbsoluteSize_5.getValue().setValue(1.51);
+      genericAbsoluteSize_5.getValue().setValue(Double.parseDouble(userFieldFunction_6.getDefinition()));
 
 
 

@@ -68,19 +68,8 @@ public class init_UserInputVariables extends StarMacro {
     Simulation simulation_0 = 
       getActiveSimulation();
 
-    // PhysicsContinuum physicsContinuum_0 = 
-    //   ((PhysicsContinuum) simulation_0.getContinuumManager().getContinuum("Physics 1"));
-
-    // AutoMeshOperation autoMeshOperation_0 = 
-    //   ((AutoMeshOperation) simulation_0.get(MeshOperationManager.class).getObject("Automated Mesh"));
-
-
-
-      //
-      // int 			nVariables 	= 0;
+      // read the CSV file, and define field functions
       List<String>	textline 		= new ArrayList<String>();
-
-
   		File f = new File(path0);
       try {
 
@@ -90,70 +79,60 @@ public class init_UserInputVariables extends StarMacro {
           
           Integer nLines = new Integer(0);
           while (sc.hasNextLine()) {
-      		    // this skips the header line
-      		    // if(nLines == 0) {
-      		    //     nLines = nLines + 1;
-      		    //     sc.nextLine();
-      		    //     continue;
-      		    // }
               nLines = nLines + 1;
               line   = sc.nextLine();
               textline.add(line);
 
+              String name = line.split(",")[0];
+              String value = line.split(",")[1];
 
 
+              simulation_0.println("DEBUG 0: line = " + line);
+              simulation_0.println("DEBUG 0: name = " + name);
+              simulation_0.println("DEBUG 0: value = " + value);
 
-              // double density   = Double.parseDouble(line.split(",")[0]);
-          String name = line.split(",")[0];
-          String value = line.split(",")[1];
+              boolean atleastOneAlpha = value.matches(".*[a-zA-Z]+.*");
+              if(atleastOneAlpha){
+                // skip, because input was a string
+                // contains alphanumeric, so define as an Annoration
 
-
-          simulation_0.println("DEBUG 0: line = " + line);
-          simulation_0.println("DEBUG 0: name = " + name);
-          simulation_0.println("DEBUG 0: density = " + value);
-
-
-
-
-          UserFieldFunction userFieldFunction_0 = 
-            simulation_0.getFieldFunctionManager().createFieldFunction();
-
-            userFieldFunction_0.getTypeOption().setSelected(FieldFunctionTypeOption.Type.SCALAR);
-
-            userFieldFunction_0.setPresentationName("__" + name);
-
-            // userFieldFunction_0.setIgnoreBoundaryValues(true);
-
-            userFieldFunction_0.setFunctionName("__" + name);
-
-            userFieldFunction_0.setDefinition(value);
-            // userFieldFunction_0.setDefinition("${__length}");
+                simulation_0.println("DEBUG 0: defining as an Annotation: " + value);
 
 
+                SimpleAnnotation simpleAnnotation_1 = 
+                    simulation_0.getAnnotationManager().createSimpleAnnotation();
+                    simpleAnnotation_1.setPresentationName(name);
+                    simpleAnnotation_1.setText(value);
 
-    //         UserFieldFunction userFieldFunction_9 = 
-    //   simulation_0.getFieldFunctionManager().createFieldFunction();
 
-    // userFieldFunction_9.getTypeOption().setSelected(FieldFunctionTypeOption.Type.SCALAR);
-
-    // userFieldFunction_9.setPresentationName("9.uref");
-
-    // userFieldFunction_9.setFunctionName("uref");
-
-    // userFieldFunction_9.setDefinition("$${WINDSPEED}[0]");
+              }else{
+                // input was a scalar, define a field function
+                UserFieldFunction userFieldFunction_0 = 
+                    simulation_0.getFieldFunctionManager().createFieldFunction();
+                    userFieldFunction_0.getTypeOption().setSelected(FieldFunctionTypeOption.Type.SCALAR);
+                    userFieldFunction_0.setPresentationName("__" + name);
+                    userFieldFunction_0.setFunctionName("__" + name);
+                    userFieldFunction_0.setDefinition(value);
+              }
 
           }
-
-
-
-
-
 
       } catch (FileNotFoundException ex) {
           Logger.getLogger(init_UserInputVariables.class.getName()).log(Level.SEVERE, null, ex);
       } // end try
 
 
+
+
+      // // DEBUGGING
+      // // test that you can use the Annotation class
+      // // get the user inputs field functions
+      // SimpleAnnotation simpleAnnotation_00 = 
+      // ((SimpleAnnotation) simulation_0.getAnnotationManager().getObject("turbines_Flume"));
+
+      // simulation_0.println("DEBUG 0: Annotation text: " + simpleAnnotation_00.getText());
+
+      
 
   }
 }

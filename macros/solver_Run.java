@@ -29,9 +29,6 @@ public class solver_Run extends StarMacro {
     Simulation simulation_0 = 
       getActiveSimulation();
 
-    // it is useful to change convergence criteria here (mostly for debugging)
-    new StarScript(getActiveSimulation(), new java.io.File(resolvePath("solver_UpdateConvergenceCriteria.java"))).play();
-
     // run the simulation (this will restart from solution of previous known iteration)
     simulation_0.getSimulationIterator().run();
 

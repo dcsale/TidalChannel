@@ -55,6 +55,6 @@ public class solver_OptimalSettings extends StarMacro {
     KwTurbViscositySolver kwTurbViscositySolver_0 = 
       ((KwTurbViscositySolver) simulation_0.getSolverManager().getSolver(KwTurbViscositySolver.class));
 
-    kwTurbViscositySolver_0.setMaxTvr(1.0E10);
+    kwTurbViscositySolver_0.setMaxTvr(1.0E10); // this is recommended for ABL high Reynolds # flows
   }
 }

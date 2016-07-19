@@ -31,6 +31,7 @@ public class _main_2 extends StarMacro {
 
 
     // now create the ABL inflow
+    new StarScript(getActiveSimulation(), new java.io.File(resolvePath("physics_BC_RoughSurface.java"))).play();
     new StarScript(getActiveSimulation(), new java.io.File(resolvePath("fieldFunction_ABL_inlet.java"))).play();
     new StarScript(getActiveSimulation(), new java.io.File(resolvePath("physics_BC_InflowABL.java"))).play();
     new StarScript(getActiveSimulation(), new java.io.File(resolvePath("physics_BC_OutletABL.java"))).play();

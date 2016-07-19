@@ -19,7 +19,7 @@ public class parts_SectionPlanesTurbines extends StarMacro {
 
   ///////////////////////////////////////////////////////////////////////////////
   // USER INPUTS (all these user inputs should be read from a CSV file instead)
-  String path0    = "../inputs/turbines.csv";
+  // String path0    = "../inputs/turbines.csv";
 
 
   ///////////////////////////////////////////////////////////////////////////////
@@ -37,12 +37,18 @@ public class parts_SectionPlanesTurbines extends StarMacro {
       simulation_0.getRegionManager().getRegion("Region");
 
 
+
+      SimpleAnnotation simpleAnnotation_00 = 
+        ((SimpleAnnotation) simulation_0.getAnnotationManager().getObject("file_turbines"));
+    // File f = new File("../inputs/" + simpleAnnotation_00.getText() + ".csv");  
+        
+
         //
         int       nVirtualDisks   = 0;
         List<String>  textline    = new ArrayList<String>();
 
-
-        File f = new File(path0);
+        File f = new File("../inputs/" + simpleAnnotation_00.getText() + ".csv");  
+        // File f = new File(path0);
         try {
 
             FileReader  fr   = new FileReader(f);

@@ -70,10 +70,6 @@ public class parts_FluidRegion_BC extends StarMacro {
 
   private void execute0() {
 
-    // new StarScript(getActiveRootObject(),
-
-    //                new java.io.File(resolvePath("physics_SST_KOmega.java"))).play();
-
 
     Simulation simulation_0 = 
       getActiveSimulation();

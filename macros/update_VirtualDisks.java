@@ -24,8 +24,8 @@ public class update_VirtualDisks extends StarMacro {
     //
     // path to CSV file with names and coordinates of point probes (this gets updated from the "mooring model" code) This file should NOT have any empty lines at bottom 
     // String path1                = "../outputs/rotors.csv";
-    String path1                = "../inputs/turbines.csv";
-    static final int nUpdates   = 3;
+    // String path1                = "../inputs/turbines.csv";
+    // static final int nUpdates   = 3;
 
     ///////////////////////////////////////////////////////////////////////////////
 
@@ -47,7 +47,19 @@ public class update_VirtualDisks extends StarMacro {
 
 
 
-        for (int i = 0; i < nUpdates; i++) {
+
+        SimpleAnnotation simpleAnnotation_00 = 
+            ((SimpleAnnotation) simulation_0.getAnnotationManager().getObject("file_turbines"));
+        // File f = new File("../inputs/" + simpleAnnotation_00.getText() + ".csv");
+
+        UserFieldFunction userFieldFunction_0 = 
+            ((UserFieldFunction) simulation_0.getFieldFunctionManager().getFunction("__nUpdates"));
+
+        
+
+
+        for (int i = 0; i < Integer.parseInt(userFieldFunction_0.getDefinition()); i++) {
+        // for (int i = 0; i < nUpdates; i++) {
 
                 // run Matlab to compute the new rotor speeds
                 // String cmd = "matlab -nodesktop -nosplash < adjustRotorSpeeds.m 2>&1 | tee log.adjustRotorSpeeds";
@@ -61,7 +73,8 @@ public class update_VirtualDisks extends StarMacro {
 
                 // read the turbine input file again
                 // then recompute the tip-speed-ratio and update the rotor speed accordingly
-                File f = new File(path1);
+                File f = new File("../inputs/" + simpleAnnotation_00.getText() + ".csv");
+                // File f = new File(path1);
                 try {
 
                     FileReader  fr      = new FileReader(f);
