@@ -12,14 +12,13 @@
 ## --------------------------------------------------------
 ## RENAME for your job
 ## --------------------------------------------------------
-#PBS -N tidalchannel-motley
-
+#PBS -N testUserInputs
 
 ## --------------------------------------------------------
 ## GROUP to run under, or run under backfill
 ## --------------------------------------------------------
-#PBS -W group_list=hyak-motley
-## PBS -W group_list=hyak-stf
+## PBS -W group_list=hyak-motley
+#PBS -W group_list=hyak-stf
 ## PBS -q bf
 
 
@@ -38,7 +37,7 @@
 ## --------------------------------------------------------
 ## WALLTIME (defaults to 1 hour, always specify for longer jobs)
 ## --------------------------------------------------------
-#PBS -l walltime=06:33:13
+#PBS -l walltime=12:33:33
 
 
 ## --------------------------------------------------------
@@ -63,28 +62,13 @@
 ## --------------------------------------------------------
 ## LOAD the appropriate environment modules and variables
 ## --------------------------------------------------------
-module load contrib/starccm_11.02.010-R8
+module load contrib/starccm_11.04.010-R8
+module load matlab_2015b
 
 ## -------------------------------------------------------- 
 ## RUN the applications here
 ## -------------------------------------------------------- 
-
-#starSimFile="mets2016__Big__Backfill"
-# starSimFile="runs.mets2016__Big__Backfill"
 starSimFile="tidalchannel-hyak-test"
-
-# if running in the backfill, account for checkpointing and restarting (actually, maybe do not need?)
-# logFile="log.*"
-# if [ "$(ls -A $logFile)" ]; then
-#     echo "Do not re-create mesh because a logfile exists"
-#     echo "Attempt to continue solver from last time step"
-#     starMacros="run.java"
-# else
-#     echo "The logfile is empty or not found"
-#     echo "Starting from a clean state"
-#     starMacros="main.java"
-# fi
-
 starMacros="../macros/_main_0.java"
 
 ## CHANGE directory to where job was submitted (careful, PBS defaults to user home directory)
