@@ -62,6 +62,7 @@ public class update_VirtualDisks extends StarMacro {
         // for (int i = 0; i < nUpdates; i++) {
 
                 // run Matlab to compute the new rotor speeds
+                // the Matlab script could also do things like run the UW Mooring code and then update the "turbine input file"
                 // String cmd = "matlab -nodesktop -nosplash < adjustRotorSpeeds.m 2>&1 | tee log.adjustRotorSpeeds";
                 String cmd = "../utilities/run_matlab_scripts.sh";
                 try {
@@ -94,6 +95,9 @@ public class update_VirtualDisks extends StarMacro {
                         double x    = Double.parseDouble(line.split(",")[3]);
                         double y    = Double.parseDouble(line.split(",")[4]);
                         double z    = Double.parseDouble(line.split(",")[5]);
+                        // double nx   = Double.parseDouble(line.split(",")[6]);
+                        // double ny   = Double.parseDouble(line.split(",")[7]);
+                        // double nz   = Double.parseDouble(line.split(",")[8]);
 
                         VirtualDisk virtualDisk_0 = 
                           ((VirtualDisk) virtualDiskModel_0.getVirtualDiskManager().getObject(name));
@@ -106,19 +110,33 @@ public class update_VirtualDisks extends StarMacro {
 
                         coordinate_0.setCoordinate(units_0, units_0, units_0, new DoubleVector(new double[] {x, y, z}));
 
+                        simulation_0.println("Virtual Disk '" + name + "' updated coordinates (" + x + "," + y + "," + z + ")");
+
+
+
+
+
+
                         VdmRotationRateInputValue vdmRotationRateInputValue_0 = 
                           virtualDisk_0.getComponentsManager().get(VdmRotationRateInputValue.class);
 
-                        vdmRotationRateInputValue_0.getRotationRate().setValue(rpm);
+                        vdmRotationRateInputValue_0.getRotationRate().setValue(rpm);  
 
-                        simulation_0.println("Virtual Disk '" + name + "' updated coordinates (" + x + "," + y + "," + z + ")");
+                        ExpressionReport expressionReport_0 = 
+                          ((ExpressionReport) simulation_0.getReportManager().getReport("Rotor Speed (" + name + ")"));
+                        expressionReport_0.setDefinition(Double.toString(rpm));                   
 
                         simulation_0.println("Virtual Disk '" + name + "' updated rotor speed (" + rpm + ")");
 
 
-                        ExpressionReport expressionReport_0 = 
-                          ((ExpressionReport) simulation_0.getReportManager().getReport("Rotor Speed (" + name + ")"));
-                        expressionReport_0.setDefinition(Double.toString(rpm));
+
+
+
+
+                        // simulation_0.println("Virtual Disk '" + name + "' updated direction vectors (" + nx + "," + ny + "," + nz + ")");
+
+
+                        
 
 
                     } // end while

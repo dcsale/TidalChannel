@@ -38,7 +38,7 @@ public class _main_1 extends StarMacro {
     // new StarScript(getActiveSimulation(), new java.io.File(resolvePath("physics_KEpsilon_REB.java"))).play();
     // new StarScript(getActiveSimulation(), new java.io.File(resolvePath("physics_RST_QLS.java"))).play();
     new StarScript(getActiveSimulation(), new java.io.File(resolvePath("parts_FluidRegion_BC.java"))).play();
-    // new StarScript(getActiveSimulation(), new java.io.File(resolvePath("physics_BC_RoughSurface.java"))).play();
+    new StarScript(getActiveSimulation(), new java.io.File(resolvePath("physics_BC_RoughSurface.java"))).play();
     new StarScript(getActiveSimulation(), new java.io.File(resolvePath("physics_BC_InflowUniform.java"))).play();
 
     
@@ -72,7 +72,7 @@ public class _main_1 extends StarMacro {
     new StarScript(getActiveSimulation(), new java.io.File(resolvePath("scene_BoundaryLayer.java"))).play();
     new StarScript(getActiveSimulation(), new java.io.File(resolvePath("scene_vorticity.java"))).play();
     new StarScript(getActiveSimulation(), new java.io.File(resolvePath("scene_TurbulenceIntensityLocal.java"))).play();
-    new StarScript(getActiveSimulation(), new java.io.File(resolvePath("scene_LIC.java"))).play();
+    new StarScript(getActiveSimulation(), new java.io.File(resolvePath("scene_LineIntegralConvolution_Velocity.java"))).play();
     new StarScript(getActiveSimulation(), new java.io.File(resolvePath("scene_BoundaryLayerProfile.java"))).play();
     // new StarScript(getActiveSimulation(), new java.io.File(resolvePath("fieldFunction_Residuals.java"))).play();
 
@@ -91,6 +91,9 @@ public class _main_1 extends StarMacro {
     new StarScript(getActiveSimulation(), new java.io.File(resolvePath("export_PointProbes.java"))).play(); 
     new StarScript(getActiveSimulation(), new java.io.File(resolvePath("scene_SaveHardcopies.java"))).play();
 
+    // simulation_0.saveState(getSimulation().getPresentationName()+"_inflowUniform.sim");
+    Simulation simulation_0 = getActiveSimulation();
+    simulation_0.saveState(resolvePath("1_inflowUniform.sim"));
 
     
 

@@ -43,6 +43,11 @@ public class _main_2 extends StarMacro {
     new StarScript(getActiveSimulation(), new java.io.File(resolvePath("export_PointProbes.java"))).play(); 
     new StarScript(getActiveSimulation(), new java.io.File(resolvePath("scene_SaveHardcopies.java"))).play();
   
+    // simulation_0.saveState(getSimulation().getPresentationName()+"_inflowABL.sim");
+    Simulation simulation_0 = getActiveSimulation();
+    simulation_0.saveState(resolvePath("inflowABL.sim"));
+    
+
 
   } // end execute0()
 } // end public class

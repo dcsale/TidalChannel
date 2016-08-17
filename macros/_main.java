@@ -69,7 +69,7 @@ public class _main extends StarMacro {
     new StarScript(getActiveSimulation(), new java.io.File(resolvePath("scene_BoundaryLayer.java"))).play();
     new StarScript(getActiveSimulation(), new java.io.File(resolvePath("scene_vorticity.java"))).play();
     new StarScript(getActiveSimulation(), new java.io.File(resolvePath("scene_TurbulenceIntensityLocal.java"))).play();
-    new StarScript(getActiveSimulation(), new java.io.File(resolvePath("scene_LIC.java"))).play();
+    new StarScript(getActiveSimulation(), new java.io.File(resolvePath("scene_LineIntegralConvolution_Velocity.java"))).play();
 
 
     //  sometimes field functions cannot be evaluated without an initial condition, therefore initialize a simplified verions of your more complex boundary conditions first

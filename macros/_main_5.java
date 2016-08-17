@@ -57,7 +57,10 @@ public class _main_5 extends StarMacro {
     new StarScript(getActiveSimulation(), new java.io.File(resolvePath("scene_SaveHardcopies.java"))).play();
 
 
-        
+     // simulation_0.saveState(getSimulation().getPresentationName()+"_updatedTurbineControls.sim"); 
+    Simulation simulation_0 = getActiveSimulation();
+    simulation_0.saveState(resolvePath("updatedTurbineControls.sim"));
+
 
     
 
